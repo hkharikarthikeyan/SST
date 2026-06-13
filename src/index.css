@@ -187,8 +187,8 @@ ul { list-style: none; }
 ═══════════════════════════════════════════ */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+
+
   border: 1px solid var(--border-glass);
   border-radius: var(--border-radius-md);
   padding: 28px;
@@ -204,8 +204,8 @@ ul { list-style: none; }
 
 .glass-nav {
   background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+
+
   border-bottom: 1px solid var(--border-glass);
   box-shadow: var(--shadow-sm);
 }
@@ -288,7 +288,7 @@ ul { list-style: none; }
 .glow-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+
   z-index: 0;
   pointer-events: none;
 }

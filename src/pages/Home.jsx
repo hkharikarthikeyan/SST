@@ -152,7 +152,7 @@ export default function Home({ setActiveTab, theme }) {
             gridTemplateColumns: '1fr 1fr',
             gap: '20px'
           }}>
-            <div className="glass-card" style={{ padding: '24px',marginTop: '20px' }}>
+            <div className="glass-card" style={{ padding: '24px', marginTop: '20px' }}>
               <h4 style={{ color: 'var(--secondary)', marginBottom: '12px', fontSize: '1.1rem' }}>Accreditation Audits</h4>
               <p style={{ fontSize: '0.8rem', lineHeight: 1.6 }}>Preparing colleges for NAAC & NBA audits through rigorous auditing procedures.</p>
             </div>
@@ -160,7 +160,7 @@ export default function Home({ setActiveTab, theme }) {
               <h4 style={{ color: 'var(--accent)', marginBottom: '12px', fontSize: '1.1rem' }}>Global Exchanges</h4>
               <p style={{ fontSize: '0.8rem', lineHeight: 1.6 }}>Facilitating bilateral delegations, academic exchanges and partnerships across 30+ nations.</p>
             </div>
-            <div className="glass-card" style={{ padding: '24px',  }}>
+            <div className="glass-card" style={{ padding: '24px', }}>
               <h4 style={{ color: '#facc15', marginBottom: '12px', fontSize: '1.1rem' }}>Indexed Publications</h4>
               <p style={{ fontSize: '0.8rem', lineHeight: 1.6 }}>Peer-reviewed article distributions across indexed repositories and registers.</p>
             </div>
@@ -247,7 +247,7 @@ export default function Home({ setActiveTab, theme }) {
       </section>
 
       {/* Quick service prompt */}
-      <section className="section-padding" style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(10,25,47,0.8), rgba(255,74,90,0.08))', borderTop: '1px solid var(--border-glass)' }}>
+      <section className="section-padding" style={{ textAlign: 'center', background: '#b7b7b7', borderTop: '1px solid var(--border-glass)' }}>
         <h2 style={{ marginBottom: '20px', fontSize: '2rem' }}>Are You Planning an Academic Accredit or Event?</h2>
         <p style={{ maxWidth: '600px', margin: '0 auto 30px', color: 'var(--text-muted)' }}>
           Get comprehensive guidance for setting up institutional audits, organizing a conference, publishing proceedings, or establishing a local student chapter.

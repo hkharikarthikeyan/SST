@@ -15,7 +15,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
       actionTab: "consultancy",
       accentColor: "var(--secondary)",
       bgGradient: "linear-gradient(rgba(10, 25, 47, 0.85), rgba(2, 12, 27, 0.95))",
-    bgGradientLight: "linear-gradient(rgba(242, 242, 240, 0.85), rgba(250, 250, 250, 0.95))"
+      bgGradientLight: "linear-gradient(rgba(242, 242, 240, 0.85), rgba(250, 250, 250, 0.95))"
     },
     {
       title: "Advancing Innovation & Global Conferences",
@@ -27,7 +27,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
       actionTab: "conferences",
       accentColor: "var(--accent)",
       bgGradient: "linear-gradient(rgba(20, 10, 25, 0.85), rgba(2, 12, 27, 0.95))",
-    bgGradientLight: "linear-gradient(rgba(242, 207, 119, 0.85), rgba(255, 255, 255, 0.95))"
+      bgGradientLight: "linear-gradient(rgba(242, 207, 119, 0.85), rgba(255, 255, 255, 0.95))"
     },
     {
       title: "Peer-Reviewed Scientific Publications",
@@ -39,7 +39,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
       actionTab: "publications",
       accentColor: "#facc15",
       bgGradient: "linear-gradient(rgba(10, 20, 47, 0.85), rgba(2, 12, 27, 0.95))",
-    bgGradientLight: "linear-gradient(rgba(242, 207, 119, 0.85), rgba(255, 255, 255, 0.95))"
+      bgGradientLight: "linear-gradient(rgba(242, 207, 119, 0.85), rgba(255, 255, 255, 0.95))"
     }
   ];
 
@@ -75,8 +75,8 @@ export default function HeroSlider({ setActiveTab, theme }) {
       {/* Slide Container */}
       <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
         {slides.map((slide, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             style={{
               position: 'absolute',
               top: 0,
@@ -108,7 +108,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
             {/* Slide Content */}
             <div style={{ maxWidth: '750px', position: 'relative', zIndex: 2 }}>
               {/* Badge */}
-              <div 
+              <div
                 className="animate-slide-left"
                 style={{
                   display: 'inline-flex',
@@ -130,9 +130,9 @@ export default function HeroSlider({ setActiveTab, theme }) {
               </div>
 
               {/* Title */}
-              <h1 
+              <h1
                 className="gradient-text animate-fade-up"
-                style={{ 
+                style={{
                   lineHeight: 1.1,
                   marginBottom: '24px',
                   fontWeight: 800,
@@ -144,7 +144,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
               </h1>
 
               {/* Description */}
-              <p 
+              <p
                 className="animate-fade-up"
                 style={{
                   fontSize: 'clamp(1rem, 2vw, 1.15rem)',
@@ -158,9 +158,9 @@ export default function HeroSlider({ setActiveTab, theme }) {
 
               {/* Actions */}
               <div className="animate-fade-up" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <button 
+                <button
                   onClick={() => setActiveTab(slide.actionTab)}
-                  className="btn" 
+                  className="btn"
                   style={{
                     background: slide.accentColor,
                     borderColor: slide.accentColor,
@@ -177,7 +177,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
                 >
                   {slide.actionText} <ArrowRight size={16} />
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveTab('about')}
                   className="btn btn-secondary"
                 >
@@ -190,7 +190,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
       </div>
 
       {/* Navigation Arrows */}
-      <button 
+      <button
         onClick={prevSlide}
         className="flex-center"
         style={{
@@ -212,7 +212,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
         <ChevronLeft size={24} />
       </button>
 
-      <button 
+      <button
         onClick={nextSlide}
         className="flex-center"
         style={{
@@ -245,7 +245,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
         zIndex: 10
       }}>
         {slides.map((_, idx) => (
-          <button 
+          <button
             key={idx}
             onClick={() => setCurrentSlide(idx)}
             style={{
