@@ -247,7 +247,7 @@ export default function Home({ setActiveTab, theme }) {
       </section>
 
       {/* Quick service prompt */}
-      <section className="section-padding" style={{ textAlign: 'center', background: '#b7b7b7', borderTop: '1px solid var(--border-glass)' }}>
+      <section className="section-padding" style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(239, 240, 243, 0.8), rgba(255,74,90,0.08))', borderTop: '1px solid var(--border-glass)' }}>
         <h2 style={{ marginBottom: '20px', fontSize: '2rem' }}>Are You Planning an Academic Accredit or Event?</h2>
         <p style={{ maxWidth: '600px', margin: '0 auto 30px', color: 'var(--text-muted)' }}>
           Get comprehensive guidance for setting up institutional audits, organizing a conference, publishing proceedings, or establishing a local student chapter.
