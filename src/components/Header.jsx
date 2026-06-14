@@ -4,23 +4,53 @@ import { Menu, X, Search, Globe, ChevronDown, User, UserPlus, BookOpen, Sun, Moo
 export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(null);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(null);
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About Us' },
     { 
       id: 'services', 
       label: 'Services',
-      dropdown: [
-        { id: 'consultancy', label: 'Academic & R&D Consultancy' },
-        { id: 'publications', label: 'Scientific Publications' },
-        { id: 'membership', label: 'Professional Memberships' }
+      megaMenu: [
+        {
+          category: 'Education',
+          items: [
+            'Hackathon',
+            'Internship',
+            'Innovative Project',
+            'Hands-on Training',
+            'FDP / Seminar',
+            'Skills Development'
+          ]
+        },
+        {
+          category: 'Software',
+          items: [
+            'Full Stack Developer',
+            'Data Analytics',
+            'UI & UX Design',
+            'Digital Marketing',
+            'Training Programs'
+          ]
+        },
+        {
+          category: 'Research',
+          items: [
+            'Research Associates',
+            'Research Publications',
+            'Conferences',
+            'Book Publications',
+            'Award Ceremony',
+            'Patent',
+            'Funding Projects'
+          ]
+        }
       ]
     },
-    { id: 'conferences', label: 'Conferences & Events' },
-    { id: 'publications', label: 'Journals' },
-    { id: 'membership', label: 'Chapters' },
-    { id: 'about', label: 'About & Team' },
-    { id: 'contact', label: 'Contact Us' }
+    { id: 'conferences', label: 'Events' },
+    { id: 'contact', label: 'Contact Us' },
+    { id: 'publications', label: 'Journals' }
   ];
 
   const handleTabClick = (tabId) => {
@@ -42,15 +72,16 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
       justifyContent: 'space-between'
     }}>
       {/* Logo Area */}
-      <div className="flex-center" style={{ gap: '12px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
+      <div className="flex-center" style={{ gap: '10px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
         <div className="flex-center" style={{
-          width: '45px',
-          height: '45px',
-          borderRadius: '12px',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50px',
           background: 'linear-gradient(135deg, var(--secondary), var(--accent))',
-          boxShadow: 'var(--shadow-glow)'
+          boxShadow: 'var(--shadow-glow)',
+          
         }}>
-          <BookOpen size={24} color="#0a192f" strokeWidth={2.5} />
+          <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div>
           <span style={{
@@ -80,13 +111,13 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
         <ul style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           {navItems.map((item) => (
             <li key={item.id} style={{ position: 'relative' }}
-                onMouseEnter={() => item.dropdown && setShowDropdown(item.id)}
-                onMouseLeave={() => item.dropdown && setShowDropdown(null)}>
-              {item.dropdown ? (
+                onMouseEnter={() => (item.dropdown || item.megaMenu) && setShowDropdown(item.id)}
+                onMouseLeave={() => (item.dropdown || item.megaMenu) && setShowDropdown(null)}>
+              {item.megaMenu ? (
                 <button style={{
                   background: 'none',
                   border: 'none',
-                  color: activeTab === 'consultancy' || activeTab === 'publications' || activeTab === 'membership' ? 'var(--secondary)' : 'var(--text-muted)',
+                  color: 'var(--text-muted)',
                   fontFamily: 'var(--font-heading)',
                   fontSize: '0.95rem',
                   fontWeight: 500,
@@ -130,47 +161,66 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
                 </button>
               )}
 
-              {/* Dropdown Menu */}
-              {item.dropdown && showDropdown === item.id && (
-                <ul className="glass-card" style={{
+              {/* Mega Menu */}
+              {item.megaMenu && showDropdown === item.id && (
+                <div className="glass-card" style={{
                   position: 'absolute',
                   top: '100%',
-                  left: 0,
-                  width: '240px',
-                  padding: '12px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '4px',
+                  left: '-120px',
+                  width: '600px',
+                  padding: '20px',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '12px',
                   boxShadow: 'var(--shadow-lg)',
                   border: '1px solid var(--border)',
                   borderRadius: '12px',
                   zIndex: 2000
                 }}>
-                  {item.dropdown.map((subItem) => (
-                    <li key={subItem.id}>
-                      <button 
-                        onClick={() => handleTabClick(subItem.id)}
-                        style={{
-                          width: '100%',
-                          textAlign: 'left',
-                          background: 'none',
-                          border: 'none',
-                          padding: '10px 14px',
-                          color: activeTab === subItem.id ? 'var(--secondary)' : 'var(--text-main)',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.9rem',
-                          borderRadius: '8px',
-                          cursor: 'pointer',
-                          transition: 'var(--transition-fast)'
-                        }}
-                        onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(100, 255, 218, 0.08)'}
-                        onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                      >
-                        {subItem.label}
-                      </button>
-                    </li>
+                  {item.megaMenu.map((col) => (
+                    <div key={col.category}>
+                      <div style={{
+                        color: 'var(--secondary)',
+                        fontFamily: 'var(--font-heading)',
+                        fontWeight: 700,
+                        fontSize: '0.8rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        marginBottom: '8px',
+                        paddingBottom: '6px',
+                        borderBottom: '1px solid var(--border)'
+                      }}>
+                        {col.category}
+                      </div>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        {col.items.map((subItem) => (
+                          <li key={subItem}>
+                            <button
+                              onClick={() => setShowDropdown(null)}
+                              style={{
+                                width: '100%',
+                                textAlign: 'left',
+                                background: 'none',
+                                border: 'none',
+                                padding: '7px 10px',
+                                color: 'var(--text-main)',
+                                fontFamily: 'var(--font-body)',
+                                fontSize: '0.85rem',
+                                borderRadius: '6px',
+                                cursor: 'pointer',
+                                transition: 'var(--transition-fast)'
+                              }}
+                              onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(100, 255, 218, 0.08)'}
+                              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                            >
+                              {subItem}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
             </li>
           ))}
@@ -281,36 +331,65 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
 
             {navItems.map((item) => (
               <li key={item.id}>
-                {item.dropdown ? (
+                {item.megaMenu ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <span style={{
-                      color: 'var(--text-muted)',
-                      fontFamily: 'var(--font-heading)',
-                      fontWeight: 600,
-                      fontSize: '1rem',
-                      paddingLeft: '10px'
-                    }}>
-                      {item.label}
-                    </span>
-                    <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {item.dropdown.map((subItem) => (
-                        <li key={subItem.id}>
-                          <button 
-                            onClick={() => handleTabClick(subItem.id)}
-                            style={{
-                              background: 'none',
-                              border: 'none',
-                              color: activeTab === subItem.id ? 'var(--secondary)' : 'var(--text-main)',
-                              fontSize: '0.95rem',
-                              cursor: 'pointer',
-                              padding: '6px 0'
-                            }}
-                          >
-                            {subItem.label}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
+                    <button
+                      onClick={() => setMobileServicesOpen(mobileServicesOpen ? null : item.id)}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: 'var(--text-main)',
+                        fontFamily: 'var(--font-heading)',
+                        fontWeight: 600,
+                        fontSize: '1.1rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        padding: '10px'
+                      }}
+                    >
+                      {item.label} <ChevronDown size={16} style={{ transform: mobileServicesOpen === item.id ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+                    </button>
+                    {mobileServicesOpen === item.id && (
+                      <div style={{ paddingLeft: '10px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {item.megaMenu.map((col) => (
+                          <div key={col.category}>
+                            <div style={{
+                              color: 'var(--secondary)',
+                              fontFamily: 'var(--font-heading)',
+                              fontWeight: 700,
+                              fontSize: '0.75rem',
+                              textTransform: 'uppercase',
+                              letterSpacing: '1px',
+                              marginBottom: '6px'
+                            }}>
+                              {col.category}
+                            </div>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                              {col.items.map((subItem) => (
+                                <li key={subItem}>
+                                  <button
+                                    onClick={() => setIsOpen(false)}
+                                    style={{
+                                      background: 'none',
+                                      border: 'none',
+                                      color: 'var(--text-main)',
+                                      fontSize: '0.9rem',
+                                      cursor: 'pointer',
+                                      padding: '5px 0'
+                                    }}
+                                  >
+                                    {subItem}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <button 

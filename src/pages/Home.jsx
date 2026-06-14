@@ -83,6 +83,15 @@ export default function Home({ setActiveTab, theme }) {
     { title: "Int. Conference on Innovations & Practices in Electrical Engineering", loc: "KDK College of Engineering, Nagpur" }
   ];
 
+  const sectionStyles = {
+    statsBackground: theme === 'light' ? 'rgba(255, 255, 255, 0.75)' : 'rgba(1, 56, 78, 0.4)',
+    statsCardBackground: theme === 'light' ? 'rgba(255, 255, 255, 0.92)' : 'rgba(255, 253, 253, 0.27)',
+    coreValuesBackground: theme === 'light' ? 'rgba(255, 255, 255, 0.65)' : 'rgba(23, 42, 69, 0.2)',
+    servicePromptBackground: theme === 'light'
+      ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 199, 119, 0.12))'
+      : 'linear-gradient(135deg, rgba(10,25,47,0.8), rgba(255,74,90,0.08))'
+  };
+
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       {/* Slider */}
@@ -97,7 +106,7 @@ export default function Home({ setActiveTab, theme }) {
       {/* Stats Section */}
       <section style={{
         padding: '60px 5vw',
-        background: theme === 'light' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(1, 56, 78, 0.4)',
+        background: sectionStyles.statsBackground,
         borderTop: '1px solid var(--border-glass)',
         borderBottom: '1px solid var(--border-glass)',
         position: 'relative'
@@ -111,7 +120,7 @@ export default function Home({ setActiveTab, theme }) {
             <div key={idx} className="flex-center" style={{
               flexDirection: 'column',
               padding: '20px',
-              background: 'rgba(255, 253, 253, 0.27)',
+              background: sectionStyles.statsCardBackground,
               borderRadius: '12px',
               border: '1px solid var(--border-glass)'
             }}>
@@ -173,7 +182,7 @@ export default function Home({ setActiveTab, theme }) {
       </section>
 
       {/* Core Values / Features Grid */}
-      <section className="section-padding" style={{ background: 'rgba(23, 42, 69, 0.2)', borderTop: '1px solid var(--border-glass)' }}>
+      <section className="section-padding" style={{ background: sectionStyles.coreValuesBackground, borderTop: '1px solid var(--border-glass)' }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="badge badge-accent" style={{ marginBottom: '15px' }}>Core Capabilities</span>
           <h2 className="section-title center" style={{ display: 'inline-block' }}>Centralized Innovation Operations</h2>
@@ -247,7 +256,7 @@ export default function Home({ setActiveTab, theme }) {
       </section>
 
       {/* Quick service prompt */}
-      <section className="section-padding" style={{ textAlign: 'center', background: 'linear-gradient(135deg, rgba(10,25,47,0.8), rgba(255,74,90,0.08))', borderTop: '1px solid var(--border-glass)' }}>
+      <section className="section-padding" style={{ textAlign: 'center', background: sectionStyles.servicePromptBackground, borderTop: '1px solid var(--border-glass)' }}>
         <h2 style={{ marginBottom: '20px', fontSize: '2rem' }}>Are You Planning an Academic Accredit or Event?</h2>
         <p style={{ maxWidth: '600px', margin: '0 auto 30px', color: 'var(--text-muted)' }}>
           Get comprehensive guidance for setting up institutional audits, organizing a conference, publishing proceedings, or establishing a local student chapter.
