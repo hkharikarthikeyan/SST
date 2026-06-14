@@ -76,7 +76,7 @@ export default function App() {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} theme={theme} toggleTheme={toggleTheme} setActiveService={setActiveService} />
 
       {/* Main Page Area */}
-      <main style={{ flex: 1, position: 'relative', zIndex: 5 }}>
+      <main style={{ flex: 1, position: 'relative', zIndex: 5, paddingTop: '80px' }}>
         {renderContent()}
       </main>
 

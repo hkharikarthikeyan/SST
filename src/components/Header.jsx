@@ -63,7 +63,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
 
   return (
     <header className="glass-nav" style={{
-      position: 'sticky',
+      position: 'fixed',
       top: 0,
       width: '100%',
       zIndex: 1000,
@@ -292,39 +292,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
           overflowY: 'auto'
         }}>
           {/* Mobile Header with Theme Toggle */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '20px' }}>
-            <div className="flex-center" style={{ gap: '12px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
-              <div className="flex-center" style={{
-                width: '45px',
-                height: '45px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, var(--secondary), var(--accent))',
-                boxShadow: 'var(--shadow-glow)'
-              }}>
-                <BookOpen size={24} color="#0a192f" strokeWidth={2.5} />
-              </div>
-              <div>
-                <span style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: 800,
-                  fontSize: '1.15rem',
-                  letterSpacing: '0.5px',
-                  color: 'var(--text-main)'
-                }}>
-                  SHAZU<span style={{ color: 'var(--secondary)' }}>SOFT</span>
-                </span>
-                <div style={{
-                  fontSize: '0.65rem',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                  color: 'var(--text-muted)',
-                  marginTop: '-4px',
-                  fontWeight: 600
-                }}>
-                  Technologies
-                </div>
-              </div>
-            </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: '20px' }}>
             <button
               onClick={toggleTheme}
               className="theme-toggle-btn"
