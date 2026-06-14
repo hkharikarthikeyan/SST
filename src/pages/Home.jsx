@@ -146,7 +146,7 @@ export default function Home({ setActiveTab, theme }) {
               Bridging the Gap Between Curriculum & Practical Excellence
             </h2>
             <p style={{ marginBottom: '20px', lineHeight: 1.8 }}>
-              Technoarete & KKCS work in tandem to minimize the academic gap. Through scientific events, conferences, seminars, and accreditation consultancy, we assist researchers and educational institutions in establishing global footprints.
+              We work in tandem to minimize the academic gap. Through scientific events, conferences, seminars, and accreditation consultancy, we assist researchers and educational institutions in establishing global footprints.
             </p>
             <p style={{ marginBottom: '30px', lineHeight: 1.8 }}>
               We provide financial aid, project mentoring, and publishing partnerships so that economic constraints never hinder technical growth and research advancement.

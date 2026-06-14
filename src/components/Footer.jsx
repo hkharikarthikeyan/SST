@@ -55,10 +55,10 @@ export default function Footer({ setActiveTab }) {
             <div className="flex-center" style={{
               width: '40px',
               height: '40px',
-              borderRadius: '10px',
+              borderRadius: '50px',
               background: 'linear-gradient(135deg, var(--secondary), var(--accent))'
             }}>
-              <BookOpen size={20} color="#0a192f" strokeWidth={2.5} />
+              <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '1px' }}>
               SHAZU<span style={{ color: 'var(--secondary)' }}>SOFT</span> Technologies

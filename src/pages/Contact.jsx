@@ -125,16 +125,7 @@ export default function Contact() {
             </div>
           ))}
 
-          {/* Setup Guide Link */}
-          <div className="glass-card" style={{ display: 'flex', gap: '15px', padding: '20px', background: 'rgba(255,255,255,0.01)' }}>
-            <HelpCircle size={24} color="var(--secondary)" style={{ flexShrink: 0 }} />
-            <div>
-              <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>Need help connecting Google Sheets?</h4>
-              <p style={{ fontSize: '0.8rem', lineHeight: 1.5 }}>
-                Open the file [GoogleSheetsSetup.md](file:///d:/client/sst/web/GoogleSheetsSetup.md) in your project workspace for a step-by-step tutorial on deploying your script.
-              </p>
-            </div>
-          </div>
+         
         </div>
 
         {/* Contact Form */}
