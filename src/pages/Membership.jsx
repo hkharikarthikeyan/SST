@@ -94,7 +94,7 @@ export default function Membership() {
       desc: "Provides centralized support for university accreditation (NAAC, NBA auditing). Helps link local chapters, execute exchange MOUs, host global conferences, and build R&D incubators.",
       benefits: [
         "Full accreditation SSR drafting and mock audit consultations",
-        "Setup of official Shazu Soft Technologies/Technoarete Incubation centers",
+        "Setup of official Shazu Soft Technologies/sst Incubation centers",
         "Free faculty development programs (FDP) for college staff",
         "Signed bilateral student delegation exchange structures"
       ]

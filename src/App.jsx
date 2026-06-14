@@ -17,11 +17,11 @@ import AboutTeam from './pages/AboutTeam';
 import Contact from './pages/Contact';
 
 export default function App() {
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState('light');
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
-  const toggleTheme = () => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
 
   const [activeTab, setActiveTab] = useState('home');
   const [activeService, setActiveService] = useState(null);

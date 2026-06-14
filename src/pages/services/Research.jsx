@@ -2,7 +2,7 @@ import React from 'react';
 import { UserCheck, FileText, CalendarDays, BookMarked, Award, FlaskConical, DollarSign } from 'lucide-react';
 
 const items = [
-  { icon: <UserCheck size={32} />, title: 'Research Associates', desc: 'Connecting qualified researchers with institutions for collaborative academic and industrial research.' },
+  { icon: <UserCheck size={32} />, title: 'Research Associations', desc: 'Connecting qualified researchers with institutions for collaborative academic and industrial research.' },
   { icon: <FileText size={32} />, title: 'Research Publications', desc: 'Support for publishing research papers in reputed national and international journals.' },
   { icon: <CalendarDays size={32} />, title: 'Conferences', desc: 'Organizing and participating in academic conferences to share and advance research findings.' },
   { icon: <BookMarked size={32} />, title: 'Book Publications', desc: 'Assistance in authoring and publishing academic books, chapters, and reference materials.' },

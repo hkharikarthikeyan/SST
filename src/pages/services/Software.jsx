@@ -2,11 +2,13 @@ import React from 'react';
 import { Code2, BarChart2, Palette, Megaphone, MonitorPlay } from 'lucide-react';
 
 const items = [
-  { icon: <Code2 size={32} />, title: 'Full Stack Developer', desc: 'End-to-end web application development covering both frontend and backend technologies.' },
+  { icon: <Code2 size={32} />, title: 'Full Stack Development', desc: 'End-to-end web application development covering both frontend and backend technologies.' },
+  { icon: <MonitorPlay size={32} />, title: 'Webinar', desc: 'Live and recorded online sessions connecting professionals and learners with expert knowledge globally.' },
   { icon: <BarChart2 size={32} />, title: 'Data Analytics', desc: 'Transform raw data into actionable insights using modern analytics tools and techniques.' },
   { icon: <Palette size={32} />, title: 'UI & UX Design', desc: 'User-centered design solutions focused on creating intuitive and engaging digital experiences.' },
   { icon: <Megaphone size={32} />, title: 'Digital Marketing', desc: 'Strategic online marketing campaigns to grow brand visibility and drive engagement.' },
   { icon: <MonitorPlay size={32} />, title: 'Training Programs', desc: 'Industry-aligned software training programs tailored for beginners to advanced learners.' },
+  
 ];
 
 export default function Software({ onBack }) {

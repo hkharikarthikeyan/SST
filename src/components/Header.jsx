@@ -42,37 +42,46 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
       justifyContent: 'space-between'
     }}>
       {/* Logo Area */}
-      <div className="flex-center" style={{ gap: '10px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
-        <div className="flex-center" style={{
-          width: '60px',
-          height: '60px',
-          borderRadius: '50px',
-          background: 'linear-gradient(135deg, var(--secondary), var(--accent))',
-          boxShadow: 'var(--shadow-glow)',
-          
+      <div className="flex-center" style={{ gap: '12px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
+        <div style={{
+          width: '72px',
+          height: '72px',
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, #F2C777, #BF8A49)',
+          boxShadow: '0 0 14px rgba(242,199,119,0.7), 0 0 28px rgba(242,199,119,0.3)',
+          border: '2px solid rgba(242,199,119,0.5)',
+          flexShrink: 0,
+          overflow: 'hidden'
         }}>
-          <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
-        <div>
-          <span style={{
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 800,
-            fontSize: '1.15rem',
-            letterSpacing: '0.5px',
-            color: 'var(--text-main)'
-          }}>
-            SHAZU<span style={{ color: 'var(--secondary)' }}>SOFT</span>
-          </span>
-          <div style={{
-            fontSize: '0.65rem',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            color: 'var(--text-muted)',
-            marginTop: '-4px',
-            fontWeight: 600
-          }}>
-            Technologies
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1 }}>
+            <span style={{
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 900,
+              fontSize: '1.5rem',
+              letterSpacing: '2px',
+              color: '#F2C777',
+              textShadow: '0 0 2px rgba(53, 47, 87, 0.9), 0 0 3px rgba(29, 28, 26, 0.6), 0 0 3px rgba(93, 63, 63, 0.3)',
+            }}>SHAZU</span>
+            <span style={{
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 900,
+              fontSize: '1.5rem',
+              letterSpacing: '2px',
+              color: 'var(--text-main)',
+              textShadow: '0 0 8px rgba(242,199,119,0.5), 0 0 16px rgba(242,199,119,0.2)',
+            }}>SOFT</span>
           </div>
+          <div style={{
+            fontSize: '1.1rem',
+            letterSpacing: '4px',
+            textTransform: 'uppercase',
+            fontWeight: 900,
+            color: '#BF8A49',
+            textShadow: '0 0 6px rgba(191,138,73,0.6)',
+          }}>Technologies</div>
         </div>
       </div>
 

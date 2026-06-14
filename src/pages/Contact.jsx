@@ -72,10 +72,10 @@ export default function Contact() {
       email: "vsr.kkconsultancy@gmail.com"
     },
     {
-      title: "Scientific Events Office (Technoarete)",
+      title: "Scientific Events Office (SST)",
       address: "India Trust Secretariat, Association Block, Chennai, Tamil Nadu, India",
       phone: "+91-44-2453-9090",
-      email: "info@technoarete.org"
+      email: "info@sst.org"
     }
   ];
 

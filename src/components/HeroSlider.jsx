@@ -19,7 +19,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
     },
     {
       title: "Advancing Innovation & Global Conferences",
-      subtitle: "TECHNOARETE OPERATIONS",
+      subtitle: "sst OPERATIONS",
       badge: "Scientific Events",
       badgeIcon: <Flame size={14} />,
       desc: "The world's largest professional body for engineering, technology, and health sciences. Over 500+ conferences, guest seminars, conventions, and skill development symposia annually.",

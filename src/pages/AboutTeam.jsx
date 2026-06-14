@@ -69,10 +69,10 @@ export default function AboutTeam() {
             content: (
               <>
                 <p style={{ lineHeight: 1.8, color: 'var(--text-muted)' }}>
-                  Accomplishing a decade of excellence since its establishment in 2018, Shaju Soft Technologies has continuously contributed to technological innovation, professional development, and digital transformation across diverse sectors.
+                  Accomplishing a decade of excellence since its establishment in 2018, shazu Soft Technologies has continuously contributed to technological innovation, professional development, and digital transformation across diverse sectors.
                 </p>
                 <p style={{ lineHeight: 1.8, marginTop: '12px', color: 'var(--text-muted)' }}>
-                  Shaju Soft Technologies is a dynamic technology-driven organization committed to fostering innovation, digital transformation, and professional excellence across diverse industries. Established with a vision to bridge the gap between emerging technologies and practical business solutions, the company serves as a catalyst for technological advancement, research, skill development, and industry-academia collaboration.
+                  shazu Soft Technologies is a dynamic technology-driven organization committed to fostering innovation, digital transformation, and professional excellence across diverse industries. Established with a vision to bridge the gap between emerging technologies and practical business solutions, the company serves as a catalyst for technological advancement, research, skill development, and industry-academia collaboration.
                 </p>
               </>
             )
@@ -113,7 +113,7 @@ export default function AboutTeam() {
             title: 'Incorporation & Recognition',
             content: (
               <p style={{ lineHeight: 1.7, color: 'var(--text-muted)' }}>
-                Shaju Soft Technologies is established as a technology-driven organization delivering innovative software solutions, IT services, digital transformation initiatives, and professional development programs. The company is a legally registered business entity and is recognized under the MSME framework in India.
+                shazu Soft Technologies is established as a technology-driven organization delivering innovative software solutions, IT services, digital transformation initiatives, and professional development programs. The company is a legally registered business entity and is recognized under the MSME framework in India.
               </p>
             )
           },
@@ -121,7 +121,7 @@ export default function AboutTeam() {
             title: 'Innovation & Skill Development',
             content: (
               <p style={{ lineHeight: 1.7, color: 'var(--text-muted)' }}>
-                With a strong emphasis on research, innovation, and capacity building, Shaju Soft Technologies develops technology-driven solutions and professional training programs that empower businesses, students, researchers, and industry professionals to thrive in the digital era.
+                With a strong emphasis on research, innovation, and capacity building, shazu Soft Technologies develops technology-driven solutions and professional training programs that empower businesses, students, researchers, and industry professionals to thrive in the digital era.
               </p>
             )
           }
@@ -135,66 +135,6 @@ export default function AboutTeam() {
         ))}
       </div>
 
-      {/* Leadership Profile Cards */}
-      <h3 style={{ marginBottom: '30px', position: 'relative', zIndex: 5 }} className="section-title">
-        Academic Advisory Board & Leadership
-      </h3>
-      <div className="grid-container" style={{ position: 'relative', zIndex: 5 }}>
-        {leadership.map((member, idx) => (
-          <div key={idx} className="glass-card" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            borderTop: idx === 0 ? '3px solid var(--secondary)' : '3px solid var(--accent)'
-          }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-                <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.05)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: idx === 0 ? 'var(--secondary)' : 'var(--accent)',
-                  border: '1px solid var(--border-glass)'
-                }}>
-                  <User size={24} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>{member.name}</h4>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                    {member.role}
-                  </span>
-                </div>
-              </div>
-
-              <p style={{ fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '20px', color: 'var(--text-muted)' }}>
-                {member.desc}
-              </p>
-            </div>
-
-            {/* Bullet achievements */}
-            <ul style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
-              borderTop: '1px solid var(--border-glass)',
-              paddingTop: '15px',
-              fontSize: '0.8rem',
-              color: 'var(--text-main)'
-            }}>
-              {member.details.map((det, index) => (
-                <li key={index} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  <CheckCircle2 size={12} color="var(--secondary)" />
-                  <span>{det}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

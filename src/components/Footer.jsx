@@ -149,11 +149,11 @@ export default function Footer({ setActiveTab }) {
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <MapPin size={22} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>S-5, Bankers Colony, Maharana Pratap Road, Panchyawala, Jaipur, Rajasthan, India</span>
+              <span>Chennai , Tamil Nadu, India</span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Phone size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>+91-97833 07390</span>
+              <span>+91 </span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Mail size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />

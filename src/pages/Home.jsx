@@ -70,17 +70,17 @@ export default function Home({ setActiveTab, theme }) {
   ];
 
   const stories = [
-    "Student Chapter Inaugurated at Dhanekula Institute of Engineering & Technology, Vijayawada.",
-    "Student Chapter Inaugurated at B K Birla Institute of Engineering & Technology, Pilani, Rajasthan.",
-    "BioLEAGUES Indo-Global Oncology Summit-18 successfully conducted, leading to advanced clinical guidelines.",
-    "Institutional audit completed for top 10 engineering institutes in South India, paving the path to NAAC A++."
+    "Student Chapter Inaugurated 1",
+    "Student Chapter Inaugurated 2",
+    "BioLEAGUES Indo-Global Oncology .",
+    "Institutional audit "
   ];
 
   const events = [
-    { title: "Int. Conference on Advances in Computing Applications", loc: "National Institute of Technology, Uttarakhand" },
-    { title: "Int. Conference on Technological Innovations in Engineering", loc: "Deogiri Institute of Engineering & Management, Maharashtra" },
-    { title: "Int. Conference on Recent Advances in Bio-Science", loc: "Parul Institute of Applied Science, Gujarat" },
-    { title: "Int. Conference on Innovations & Practices in Electrical Engineering", loc: "KDK College of Engineering, Nagpur" }
+    { title: "Int. Conference on Advances", loc: "" },
+    { title: "Int. Conference on Technological Engineering", loc: "" },
+    { title: "Int. Conference on Recent Advances", loc: "" },
+    { title: "Int. Conference on Innovations ", loc: "" }
   ];
 
   const sectionStyles = {
