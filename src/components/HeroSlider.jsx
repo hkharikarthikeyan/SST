@@ -190,16 +190,16 @@ export default function HeroSlider({ setActiveTab, theme }) {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Desktop only */}
       <button
         onClick={prevSlide}
-        className="flex-center"
+        className="flex-center hero-arrow"
         style={{
           position: 'absolute',
           left: '20px',
           zIndex: 10,
-          background: 'rgba(255,255,255,0.03)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: 'rgba(255,255,255,0.12)',
+          border: '1px solid rgba(255,255,255,0.2)',
           width: '50px',
           height: '50px',
           borderRadius: '50%',
@@ -207,21 +207,21 @@ export default function HeroSlider({ setActiveTab, theme }) {
           cursor: 'pointer',
           transition: 'var(--transition-smooth)'
         }}
-        onMouseEnter={(e) => e.target.style.background = 'rgba(100, 255, 218, 0.1)'}
-        onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.03)'}
+        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.25)'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
       >
         <ChevronLeft size={24} />
       </button>
 
       <button
         onClick={nextSlide}
-        className="flex-center"
+        className="flex-center hero-arrow"
         style={{
           position: 'absolute',
           right: '20px',
           zIndex: 10,
-          background: 'rgba(255,255,255,0.03)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: 'rgba(255,255,255,0.12)',
+          border: '1px solid rgba(255,255,255,0.2)',
           width: '50px',
           height: '50px',
           borderRadius: '50%',
@@ -229,12 +229,16 @@ export default function HeroSlider({ setActiveTab, theme }) {
           cursor: 'pointer',
           transition: 'var(--transition-smooth)'
         }}
-        onMouseEnter={(e) => e.target.style.background = 'rgba(100, 255, 218, 0.1)'}
-        onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.03)'}
-      >
+        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.25)'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+>
         <ChevronRight size={24} />
       </button>
-
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-arrow { display: none !important; }
+        }
+      `}</style>
       {/* Slide Indicators */}
       <div style={{
         position: 'absolute',
