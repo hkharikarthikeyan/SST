@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Search, Globe, ChevronDown, User, UserPlus, BookOpen, Sun, Moon } from 'lucide-react';
 
-export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) {
+export default function Header({ activeTab, setActiveTab, theme, toggleTheme, setActiveService }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(null);
@@ -9,6 +9,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
+    { id: 'associations', label: 'Association' },
     { 
       id: 'services', 
       label: 'Services',
@@ -196,7 +197,11 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
                         {col.items.map((subItem) => (
                           <li key={subItem}>
                             <button
-                              onClick={() => setShowDropdown(null)}
+                              onClick={() => {
+                                setActiveService({ category: col.category.toLowerCase(), service: subItem });
+                                setActiveTab('services');
+                                setShowDropdown(null);
+                              }}
                               style={{
                                 width: '100%',
                                 textAlign: 'left',
@@ -371,7 +376,11 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme }) 
                               {col.items.map((subItem) => (
                                 <li key={subItem}>
                                   <button
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => {
+                                      setActiveService({ category: col.category.toLowerCase(), service: subItem });
+                                      setActiveTab('services');
+                                      setIsOpen(false);
+                                    }}
                                     style={{
                                       background: 'none',
                                       border: 'none',

@@ -163,6 +163,15 @@ a {
 
 ul { list-style: none; }
 
+/* Bullet style for lists inside glass cards */
+.glass-card ul {
+  list-style-type: square;
+  list-style-position: outside;
+  margin-left: 18px;
+  padding-left: 8px;
+  color: var(--text-muted);
+}
+
 /* ═══════════════════════════════════════════
    LAYOUT UTILITIES
 ═══════════════════════════════════════════ */

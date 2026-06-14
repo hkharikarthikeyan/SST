@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Award, ShieldCheck, Heart, User, CheckCircle2 } from 'lucide-react';
 
 export default function AboutTeam() {
+  const carouselRef = useRef(null);
+  const [currentCard, setCurrentCard] = useState(0);
   const leadership = [
     {
       name: "Prof. (Dr.) Vijay Singh Rathore",
@@ -41,6 +43,8 @@ export default function AboutTeam() {
     }
   ];
 
+  
+
   return (
     <div className="section-padding" style={{ minHeight: '80vh', position: 'relative' }}>
       <div className="glow-blob glow-blob-cyan" style={{ bottom: '10%', right: '5%' }}></div>
@@ -57,50 +61,78 @@ export default function AboutTeam() {
         </p>
       </div>
 
-      {/* Narrative Section */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '40px',
-        marginBottom: '60px',
-        position: 'relative',
-        zIndex: 5
-      }}>
-        {/* About Info */}
-        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h3 style={{ marginBottom: '15px', color: 'var(--secondary)' }}>Our Era & Aspirations</h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '20px' }}>
-            Technoarete & KKCS started with a single focus: **to reduce the gap between curriculum and practical execution**. 
-            Registered under the India Trust Act (1882), we have grown into the largest network linking educational institutions, publishers, and conglomerates.
-          </p>
-          <p style={{ lineHeight: 1.8 }}>
-            Today, we consult for over 1,200+ colleges on NIRF rankings, NAAC preparations, and foreign university partnerships, while operating as a premier publisher of indexed scientific research papers.
-          </p>
-        </div>
-
-        {/* Core Values grid */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {coreValues.map((val, idx) => (
-            <div key={idx} className="glass-card" style={{ display: 'flex', gap: '20px', padding: '24px' }}>
-              <div style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}>
-                {val.icon}
-              </div>
-              <div>
-                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-main)', marginBottom: '8px' }}>{val.title}</h4>
-                <p style={{ fontSize: '0.85rem', lineHeight: 1.6 }}>{val.desc}</p>
-              </div>
+      {/* Structured About Cards (stacked vertical column) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'stretch', marginBottom: '32px' }}>
+        {[
+          {
+            title: 'Overview',
+            content: (
+              <>
+                <p style={{ lineHeight: 1.8, color: 'var(--text-muted)' }}>
+                  Accomplishing a decade of excellence since its establishment in 2018, Shaju Soft Technologies has continuously contributed to technological innovation, professional development, and digital transformation across diverse sectors.
+                </p>
+                <p style={{ lineHeight: 1.8, marginTop: '12px', color: 'var(--text-muted)' }}>
+                  Shaju Soft Technologies is a dynamic technology-driven organization committed to fostering innovation, digital transformation, and professional excellence across diverse industries. Established with a vision to bridge the gap between emerging technologies and practical business solutions, the company serves as a catalyst for technological advancement, research, skill development, and industry-academia collaboration.
+                </p>
+              </>
+            )
+          },
+          {
+            title: 'Vision',
+            content: (
+              <p style={{ lineHeight: 1.7, color: 'var(--text-muted)' }}>
+                To be a globally recognized technology and innovation partner, empowering organizations, institutions, and individuals through transformative digital solutions, advanced research, and continuous professional development, while contributing to sustainable technological and societal progress.
+              </p>
+            )
+          },
+          {
+            title: 'Mission',
+            content: (
+              <ul style={{ lineHeight: 1.7, color: 'var(--text-muted)', paddingLeft: '18px' }}>
+                <li>Deliver innovative, reliable, and scalable technology solutions that address real-world challenges across industries.</li>
+                <li>Foster a culture of research, creativity, and digital transformation through cutting-edge technologies and strategic collaborations.</li>
+                <li>Enhance professional competencies through industry-oriented training, skill development programs, and knowledge-sharing initiatives.</li>
+                <li>Bridge the gap between academia and industry by facilitating research partnerships, innovation ecosystems, and practical learning opportunities.</li>
+                <li>Uphold the highest standards of quality, integrity, customer satisfaction, and technological excellence.</li>
+              </ul>
+            )
+          },
+          {
+            title: 'Objectives',
+            content: (
+              <ul style={{ lineHeight: 1.7, color: 'var(--text-muted)', paddingLeft: '18px' }}>
+                <li>Develop and implement innovative software products and technology solutions that create measurable value for clients and stakeholders.</li>
+                <li>Promote research, development, and innovation in emerging fields such as AI, Data Science, Cloud, Cybersecurity, and IoT.</li>
+                <li>Provide professional training, certification programs, and technical workshops to enhance workforce readiness and employability.</li>
+                <li>Support startups, entrepreneurs, researchers, and institutions through mentorship, consultation, and technology enablement.</li>
+                <li>Establish strong partnerships with academic institutions, industries, and professional organizations to facilitate knowledge exchange and collaborative growth.</li>
+              </ul>
+            )
+          },
+          {
+            title: 'Incorporation & Recognition',
+            content: (
+              <p style={{ lineHeight: 1.7, color: 'var(--text-muted)' }}>
+                Shaju Soft Technologies is established as a technology-driven organization delivering innovative software solutions, IT services, digital transformation initiatives, and professional development programs. The company is a legally registered business entity and is recognized under the MSME framework in India.
+              </p>
+            )
+          },
+          {
+            title: 'Innovation & Skill Development',
+            content: (
+              <p style={{ lineHeight: 1.7, color: 'var(--text-muted)' }}>
+                With a strong emphasis on research, innovation, and capacity building, Shaju Soft Technologies develops technology-driven solutions and professional training programs that empower businesses, students, researchers, and industry professionals to thrive in the digital era.
+              </p>
+            )
+          }
+        ].map((card) => (
+          <div key={card.title} style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="glass-card" style={{ width: '100%', maxWidth: '900px' }}>
+              <h3 style={{ marginBottom: '12px', color: 'var(--secondary)' }}>{card.title}</h3>
+              {card.content}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       {/* Leadership Profile Cards */}

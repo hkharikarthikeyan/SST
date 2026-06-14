@@ -149,9 +149,30 @@ export default function Conferences() {
         </p>
       </div>
 
+      {/* Event Types Cards */}
+      <div style={{ marginBottom: '20px' }}>
+        <h3 style={{ marginBottom: '12px', textAlign: 'center' }} className="section-title">Event Types</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '16px', marginTop: '10px',textAlign: 'center' }}>
+          {[
+            'Upcoming Conference',
+            'Faculty Development Program',
+            'Webinar',
+            'Hands on training',
+            'Internship',
+            'Hackathon',
+            'Seminar'
+          ].map((label, i) => (
+            <div key={i} className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
+              <h4 style={{ marginBottom: '1px', color: 'var(--secondary)' }}>{label}</h4>
+
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Control Panel: Search and Filters */}
       <div className="glass-card" style={{
-        padding: '20px',
+        padding: '10px',
         marginBottom: '40px',
         display: 'flex',
         flexWrap: 'wrap',

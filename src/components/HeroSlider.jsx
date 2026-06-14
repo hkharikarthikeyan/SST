@@ -120,7 +120,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
                   borderRadius: '30px',
                   fontSize: '0.8rem',
                   fontWeight: 600,
-                  color: slide.accentColor,
+                  color: theme === 'light' ? '#073A59' : slide.accentColor,
                   textTransform: 'uppercase',
                   letterSpacing: '1.5px',
                   marginBottom: '20px'
@@ -137,7 +137,8 @@ export default function HeroSlider({ setActiveTab, theme }) {
                   marginBottom: '24px',
                   fontWeight: 800,
                   fontSize: 'clamp(2.2rem, 5vw, 4rem)',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5)'
+                  color: theme === 'light' ? '#073A59' : 'inherit',
+                  textShadow: theme === 'light' ? 'none' : '0 4px 12px rgba(0,0,0,0.5)'
                 }}
               >
                 {slide.title}
@@ -149,7 +150,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
                 style={{
                   fontSize: 'clamp(1rem, 2vw, 1.15rem)',
                   lineHeight: 1.7,
-                  color: 'var(--text-muted)',
+                  color: theme === 'light' ? '#073A59' : 'var(--text-muted)',
                   marginBottom: '40px'
                 }}
               >
@@ -164,7 +165,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
                   style={{
                     background: slide.accentColor,
                     borderColor: slide.accentColor,
-                    color: slide.accentColor === "var(--secondary)" ? 'var(--text-dark)' : 'white'
+                    color: theme === 'light' ? '#073A59' : (slide.accentColor === "var(--secondary)" ? 'var(--text-dark)' : 'white')
                   }}
                   onMouseEnter={(e) => {
                     e.target.style.background = 'transparent';
@@ -172,7 +173,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.background = slide.accentColor;
-                    e.target.style.color = slide.accentColor === "var(--secondary)" ? 'var(--text-dark)' : 'white';
+                    e.target.style.color = theme === 'light' ? '#073A59' : (slide.accentColor === "var(--secondary)" ? 'var(--text-dark)' : 'white');
                   }}
                 >
                   {slide.actionText} <ArrowRight size={16} />
