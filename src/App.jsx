@@ -4,6 +4,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import ServiceDetail from './pages/services/ServiceDetail';
+import Education from './pages/services/Education';
+import Software from './pages/services/Software';
+import Research from './pages/services/Research';
 import Conferences from './pages/Conferences';
 import Associations from './pages/Associations';
 import AssociationDetail from './pages/AssociationDetail';
@@ -38,6 +41,12 @@ export default function App() {
         ) : (
           <Services setActiveTab={setActiveTab} setActiveService={setActiveService} />
         );
+      case 'education':
+        return <Education onBack={() => setActiveTab('services')} />;
+      case 'software':
+        return <Software onBack={() => setActiveTab('services')} />;
+      case 'research':
+        return <Research onBack={() => setActiveTab('services')} />;
       case 'conferences':
         return <Conferences />;
       case 'associations':
@@ -55,6 +64,8 @@ export default function App() {
       case 'about':
         return <AboutTeam />;
       case 'contact':
+        return <Contact />;
+      case 'career':
         return <Contact />;
       default:
         return <Home setActiveTab={setActiveTab} />;
