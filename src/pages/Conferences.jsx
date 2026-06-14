@@ -54,7 +54,7 @@ export default function Conferences() {
       location: "Jaipur, Rajasthan (Virtual)",
       category: "mgmt",
       type: "upcoming",
-      organizer: "Shazu Soft Technologies & KKCS",
+      organizer: "Shazu Soft Technologies & SST",
       deadline: "October 05, 2026",
       desc: "A five-day Faculty Development Program focused on teaching methodologies for predictive analytics and data-driven corporate decision framework models."
     },
@@ -65,7 +65,7 @@ export default function Conferences() {
       location: "Delhi, India (In-Person)",
       category: "edu",
       type: "upcoming",
-      organizer: "KKCS Academic Consulting",
+      organizer: "SST Academic Consulting",
       deadline: "October 20, 2026",
       desc: "A hands-on symposium addressing mapping standards, course attainments, and administrative audits required to clear NAAC A++ accreditation."
     },

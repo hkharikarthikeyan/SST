@@ -7,7 +7,7 @@ export default function HeroSlider({ setActiveTab, theme }) {
   const slides = [
     {
       title: "Global Academic & R&D Consultancy",
-      subtitle: "KKCS PORTAL",
+      subtitle: "SST PORTAL",
       badge: "Institutional Excellence",
       badgeIcon: <Award size={14} />,
       desc: "Guiding premier educational institutions through accreditation audits (NAAC, NBA, NIRF), establishing international student exchange programs, and developing research capabilities.",

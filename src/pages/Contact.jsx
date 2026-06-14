@@ -66,7 +66,7 @@ export default function Contact() {
 
   const offices = [
     {
-      title: "Jaipur Headquarters (KKCS)",
+      title: "Jaipur Headquarters (SST)",
       address: "S-5, Bankers Colony, Maharana Pratap Road, Panchyawala, Jaipur, Rajasthan, India",
       phone: "+91-97833 07390",
       email: "vsr.kkconsultancy@gmail.com"
