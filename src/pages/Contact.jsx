@@ -94,49 +94,7 @@ export default function Contact() {
         </p>
       </div>
 
-      {/* Google Sheets Integration Bar / Indicator */}
-      <div className="glass-card" style={{
-        padding: '20px',
-        marginBottom: '40px',
-        border: '1px solid rgba(100, 255, 218, 0.2)',
-        background: 'rgba(10, 25, 47, 0.9)',
-        position: 'relative',
-        zIndex: 5
-      }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <Database size={24} color={customUrl ? "var(--secondary)" : "var(--accent)"} />
-            <div>
-              <h4 style={{ fontSize: '0.95rem', fontWeight: 600 }}>Google Sheets Status</h4>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                {customUrl
-                  ? "Connected! Submissions will save directly to your deployed Google Spreadsheet."
-                  : "Draft Mode: Form submissions are mocked. Paste your Apps Script Web App URL to link a live sheet."
-                }
-              </p>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', gap: '8px', flexGrow: 1, maxWidth: '500px', justifyContent: 'flex-end' }}>
-            <input
-              type="text"
-              placeholder="Paste Google Web App URL here..."
-              value={customUrl}
-              onChange={(e) => setCustomUrl(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '8px 15px',
-                borderRadius: '20px',
-                border: '1px solid var(--border-glass)',
-                background: 'var(--primary-light)',
-                color: 'var(--text-main)',
-                fontSize: '0.8rem',
-                outline: 'none'
-              }}
-            />
-          </div>
-        </div>
-      </div>
+     
 
       <div style={{
         display: 'grid',

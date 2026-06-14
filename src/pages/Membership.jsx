@@ -1,5 +1,53 @@
 import React, { useState } from 'react';
-import { Users, BookOpen, Search, ShieldCheck, Mail, Send, CheckCircle, CreditCard } from 'lucide-react';
+import { Users, BookOpen, ShieldCheck, Send, CheckCircle, Award, Briefcase } from 'lucide-react';
+
+const MEMBERSHIPS = [
+  {
+    id: 'isei',
+    title: 'Institute of Science, Engineering and Innovation (ISEI)',
+    desc: 'Advancing science, engineering, technology and innovation.'
+  },
+  {
+    id: 'iamhp',
+    title: 'International Association of Medical and Health Professionals (IAMHP)',
+    desc: 'Promoting healthcare, medical sciences and clinical research.'
+  },
+  {
+    id: 'acar',
+    title: 'Association of Creative Arts and Research (ACAR)',
+    desc: 'Fostering excellence in creative arts and cultural studies.'
+  },
+  {
+    id: 'wasp',
+    title: 'World Association of Scholars and Professionals (WASP)',
+    desc: 'Uniting scholars across disciplines for global impact.'
+  }
+];
+
+const membershipBenefits = [
+  { title: 'Professional Recognition', desc: 'Part of a respected international association committed to excellence.' },
+  { title: 'Conference Discounts', desc: 'Exclusive member discounts on registration fees for conferences and workshops.' },
+  { title: 'Publication Support', desc: 'Special benefits for publishing research papers and scholarly work.' },
+  { title: 'Leadership Opportunities', desc: 'Invited to serve as speakers, chairs, advisory members and reviewers.' },
+  { title: 'Global Networking', desc: 'Access to worldwide network of 10,000+ researchers and professionals.' },
+  { title: 'Awards & Recognition', desc: 'Outstanding members recognized through awards and fellowships.' },
+  { title: 'Research Collaboration', desc: 'Participate in interdisciplinary projects and international collaborations.' },
+  { title: 'Professional Development', desc: 'Training programs, certifications and skill enhancement opportunities.' },
+  { title: 'Digital Resources', desc: 'Access to research publications, proceedings and educational materials.' },
+];
+
+const membershipOpportunities = [
+  { title: 'Scientific and Technical Review Committee', desc: 'Participate in evaluating and reviewing technical papers and research' },
+  { title: 'Conference Organizing Committee', desc: 'Help plan and execute international conferences and seminars' },
+  { title: 'Editorial and Publication Board', desc: 'Review and publish research in peer-reviewed journals' },
+  { title: 'National Advisory Committee', desc: 'Guide national-level initiatives and policy development' },
+  { title: 'International Advisory Committee', desc: 'Shape global research direction and collaboration' },
+  { title: 'Research and Innovation Council', desc: 'Drive cutting-edge research projects and innovation' },
+  { title: 'Industry-Academia Collaboration Committee', desc: 'Bridge industry and academic partnerships' },
+  { title: 'Professional Development Committee', desc: 'Design and deliver training programs and workshops' },
+  { title: 'Student and Young Researcher Committee', desc: 'Mentor emerging researchers and lead youth initiatives' },
+  { title: 'Chapter Establishment', desc: 'Establish and lead Institutional, Professional, or Student Chapters' },
+];
 
 export default function Membership() {
   const [activeSegment, setActiveSegment] = useState('pro');
@@ -81,13 +129,61 @@ export default function Membership() {
       <div className="glow-blob glow-blob-pink" style={{ bottom: '10%', right: '5%' }}></div>
 
       <div style={{ textAlign: 'center', marginBottom: '50px', position: 'relative', zIndex: 5 }}>
-        <span className="badge">Society Membership</span>
+        <span className="badge">Professional Membership</span>
         <h2 className="section-title center" style={{ display: 'inline-block', marginTop: '10px' }}>
-          Chapters & Associations Portal
+          Join Our Global Community
         </h2>
-        <p style={{ maxWidth: '600px', margin: '15px auto 0' }}>
-          Connect with 25,000+ technical volunteers. Establish student chapters in your college or apply for individual professional memberships.
+        <p style={{ maxWidth: '720px', margin: '15px auto 0', color: 'var(--text-muted)' }}>
+          Welcomes applications from researchers, academicians, scientists, engineers, innovators, industry professionals, entrepreneurs, and students who aspire to contribute to the advancement of science, engineering, technology, and innovation worldwide.
         </p>
+      </div>
+
+      {/* Associations Cards */}
+      <div style={{ marginBottom: '40px', position: 'relative', zIndex: 5 }}>
+        <h3 style={{ marginBottom: '12px', textAlign: 'center' }} className="section-title">Member Associations</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginTop: '12px' }}>
+          {MEMBERSHIPS.map(m => (
+            <div key={m.id} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '1rem' }}>{m.title}</h4>
+              <p style={{ color: 'var(--text-muted)', marginTop: 0, fontSize: '0.9rem' }}>{m.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Membership Benefits */}
+      <div style={{ marginBottom: '40px', position: 'relative', zIndex: 5 }}>
+        <h3 style={{ marginBottom: '16px', textAlign: 'center' }} className="section-title">Member Benefits</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          {membershipBenefits.map((benefit, idx) => (
+            <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Award size={20} color="var(--secondary)" />
+                <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '0.95rem' }}>{benefit.title}</h4>
+              </div>
+              <p style={{ color: 'var(--text-muted)', marginTop: 0, fontSize: '0.85rem', lineHeight: 1.5 }}>{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Member Opportunities */}
+      <div style={{ marginBottom: '40px', position: 'relative', zIndex: 5 }}>
+        <h3 style={{ marginBottom: '16px', textAlign: 'center' }} className="section-title">Opportunities for Members</h3>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '720px', margin: '0 auto 24px' }}>
+          Members may contribute to and serve in the following committees and leadership roles
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          {membershipOpportunities.map((opportunity, idx) => (
+            <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Briefcase size={20} color="var(--secondary)" />
+                <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '0.95rem' }}>{opportunity.title}</h4>
+              </div>
+              <p style={{ color: 'var(--text-muted)', marginTop: 0, fontSize: '0.85rem', lineHeight: 1.5 }}>{opportunity.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Segment Selector Tabs */}

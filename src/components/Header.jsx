@@ -50,6 +50,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
       ]
     },
     { id: 'conferences', label: 'Events' },
+    { id: 'membership', label: 'Membership' },
     { id: 'contact', label: 'Contact Us' },
     { id: 'publications', label: 'Journals' }
   ];
