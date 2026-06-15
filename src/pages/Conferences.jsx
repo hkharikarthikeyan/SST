@@ -82,26 +82,68 @@ export default function Conferences() {
         </p>
       </div>
 
-      {/* Event Types Cards */}
+      {/* Event Types Cards - Drag to Scroll */}
       <div style={{ marginBottom: '20px' }}>
         <h3 style={{ marginBottom: '12px', textAlign: 'center' }} className="section-title">Event Types</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '16px', marginTop: '10px',textAlign: 'center' }}>
+        <div
+          className="event-types-scroll"
+          style={{
+            display: 'flex',
+            gap: '16px',
+            overflowX: 'auto',
+            paddingBottom: '12px',
+            cursor: 'grab',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}
+          onMouseDown={(e) => {
+            const el = e.currentTarget;
+            el.dataset.dragging = 'true';
+            el.dataset.startX = e.pageX - el.offsetLeft;
+            el.dataset.scrollLeft = el.scrollLeft;
+            el.style.cursor = 'grabbing';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.dataset.dragging = 'false';
+            e.currentTarget.style.cursor = 'grab';
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.dataset.dragging = 'false';
+            e.currentTarget.style.cursor = 'grab';
+          }}
+          onMouseMove={(e) => {
+            const el = e.currentTarget;
+            if (el.dataset.dragging !== 'true') return;
+            e.preventDefault();
+            const x = e.pageX - el.offsetLeft;
+            const walk = (x - parseFloat(el.dataset.startX)) * 1.5;
+            el.scrollLeft = parseFloat(el.dataset.scrollLeft) - walk;
+          }}
+        >
           {[
-            'Upcoming Conference',
-            'Faculty Development Program',
-            'Webinar',
-            'Hands on training',
-            'Internship',
-            'Hackathon',
-            'Seminar'
-          ].map((label, i) => (
-            <div key={i} className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <h4 style={{ marginBottom: '1px', color: 'var(--secondary)' }}>{label}</h4>
-
+            { label: 'Upcoming Conference' },
+            { label: 'Faculty Development Program' },
+            { label: 'Webinar' },
+            { label: 'Hands on Training'  },
+            { label: 'Internship' },
+            { label: 'Hackathon'},
+            { label: 'Seminar'},
+          ].map((item, i) => (
+            <div key={i} className="glass-card" style={{
+              minWidth: '160px',
+              flexShrink: 0,
+              textAlign: 'center',
+              padding: '20px 16px',
+              borderTop: '2px solid var(--secondary)',
+              userSelect: 'none',
+            }}>
+              <div style={{ fontSize: '1.8rem', marginBottom: '8px' }}>{item.emoji}</div>
+              <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '0.85rem', lineHeight: 1.4 }}>{item.label}</h4>
             </div>
           ))}
         </div>
       </div>
+      <style>{`.event-types-scroll::-webkit-scrollbar { display: none; }`}</style>
 
       {/* Control Panel: Search and Filters */}
       <div className="glass-card" style={{
