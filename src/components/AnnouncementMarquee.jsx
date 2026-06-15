@@ -3,12 +3,12 @@ import { Bell, Flame } from 'lucide-react';
 
 export default function AnnouncementMarquee() {
   const announcements = [
-    "📌 Signed MOU with Manipal University Jaipur, Rajasthan",
-    "📌 Signed MOU with Rao Bahadur Y Mahabaleswarappa Engineering College (RYMEC), Bellary, Karnataka",
-    "🔥 Call for Papers: 15th World Congress on Applied Science, Engineering & Technology (WCASET)",
-    "📌 Student Chapter Inaugurated at Dhanekula Institute of Engineering & Technology, Vijayawada",
-    "🚀 Unlimited Access to Technical Resources: ResearchPedia & Academic Research Library",
-    "⚡ BioLEAGUES Indo-Global Oncology Summit successfully concluded in Bhubaneswar"
+    "🎉 Exciting News! Inaugural Ceremony of Shazu Soft Technologies in Salem on 21 June 2026!",
+    "✨ Transforming Ideas into Digital Excellence — Join us to celebrate this important milestone!",
+    "📅 Date: 21 June 2026  |  📍 Location: Salem, Tamil Nadu",
+    "🎊 We invite our valued clients, partners, friends & well-wishers to celebrate with us!",
+    "🚀 A new chapter begins — driven by cutting-edge technology solutions and lasting impact!",
+    "#ShazuSoftTechnologies #InauguralCeremony #GrandOpening #Salem #Technology #Innovation"
   ];
 
   return (
@@ -86,7 +86,13 @@ export default function AnnouncementMarquee() {
         }
         
         .marquee-content {
-          animation: scroll-marquee 35s linear infinite;
+          animation: scroll-marquee 1000s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+          .marquee-content {
+            animation: scroll-marquee 1000s linear infinite;
+          }
         }
 
         .alert-bell {

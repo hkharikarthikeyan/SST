@@ -66,16 +66,16 @@ export default function Contact() {
 
   const offices = [
     {
-      title: "Jaipur Headquarters (SST)",
-      address: "S-5, Bankers Colony, Maharana Pratap Road, Panchyawala, Jaipur, Rajasthan, India",
-      phone: "+91-97833 07390",
-      email: "vsr.kkconsultancy@gmail.com"
+      title: "Headquarters — Chennai",
+      address: "55A, 1st Street, Kannikaburam, KK Nagar, Chennai - 78",
+      phone: "+91 89391 50442, +91 90803 40803",
+      email: "info@shazusofttechnologies.org"
     },
     {
-      title: "Scientific Events Office (SST)",
-      address: "India Trust Secretariat, Association Block, Chennai, Tamil Nadu, India",
-      phone: "+91-44-2453-9090",
-      email: "info@sst.org"
+      title: "Salem Branch",
+      address: "2nd Agraharam, Chairman Rajarathinam Street, Near Kamala Hospital, Salem, Tamil Nadu - 636001",
+      phone: "+91 89391 50442, +91 90803 40803",
+      email: "info@shazusofttechnologies.org"
     }
   ];
 

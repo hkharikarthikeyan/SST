@@ -24,74 +24,7 @@ export default function Conferences() {
     { id: 'edu', label: 'Education & Humanities' }
   ];
 
-  const conferencesData = [
-    {
-      id: 1,
-      title: "15th World Congress on Applied Science, Engineering & Technology (WCASET)",
-      date: "August 12-13, 2026",
-      location: "Goa, India (Hybrid)",
-      category: "eng",
-      type: "upcoming",
-      organizer: "Institute For Educational Research and Publication (IFERP)",
-      deadline: "July 10, 2026",
-      desc: "WCASET provides an opportunity for researchers, engineers, and scientists to share their findings on advancements in structural, system, software, and mechanical computing."
-    },
-    {
-      id: 2,
-      title: "Indo-Global Oncology & Allied Healthcare Summit",
-      date: "September 05-07, 2026",
-      location: "Bhubaneswar, Odisha",
-      category: "med",
-      type: "upcoming",
-      organizer: "BioLEAGUES Worldwide",
-      deadline: "August 01, 2026",
-      desc: "Connecting oncologists, surgeons, and pathologists to exchange novel concepts in precision oncology, immunotherapies, and cancer prevention strategies."
-    },
-    {
-      id: 3,
-      title: "International FDP on Business Analytics & Strategic Management",
-      date: "October 18-22, 2026",
-      location: "Jaipur, Rajasthan (Virtual)",
-      category: "mgmt",
-      type: "upcoming",
-      organizer: "Shazu Soft Technologies & SST",
-      deadline: "October 05, 2026",
-      desc: "A five-day Faculty Development Program focused on teaching methodologies for predictive analytics and data-driven corporate decision framework models."
-    },
-    {
-      id: 4,
-      title: "International Symposium on Curriculum Design & NAAC Preparedness",
-      date: "November 12, 2026",
-      location: "Delhi, India (In-Person)",
-      category: "edu",
-      type: "upcoming",
-      organizer: "SST Academic Consulting",
-      deadline: "October 20, 2026",
-      desc: "A hands-on symposium addressing mapping standards, course attainments, and administrative audits required to clear NAAC A++ accreditation."
-    },
-    {
-      id: 5,
-      title: "14th World Congress on Applied Science, Engineering & Technology",
-      date: "January 18-19, 2026",
-      location: "Kuala Lumpur, Malaysia",
-      category: "eng",
-      type: "past",
-      organizer: "IFERP",
-      deadline: "Expired",
-      desc: "Brought together 400+ delegates focusing on sustainable green energies, grid computing, and high-performance neural integrations."
-    },
-    {
-      id: 6,
-      title: "Global Summit on Pediatrics & Clinical Health Outcomes",
-      date: "March 22-23, 2026",
-      location: "Bangkok, Thailand",
-      category: "med",
-      type: "past",
-      organizer: "BioLEAGUES & SFNP",
-      deadline: "Expired",
-      desc: "Delved into nutrition parameters, pediatric disease diagnostics, and post-pandemic clinical health outcomes in developing nations."
-    }
-  ];
+  const conferencesData = [];
 
   const filteredConferences = conferencesData.filter(conf => {
     const matchesSearch = conf.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -357,9 +290,10 @@ export default function Conferences() {
             ))}
           </div>
         ) : (
-          <div className="glass-card" style={{ textAlign: 'center', padding: '60px 20px' }}>
-            <h3 style={{ marginBottom: '10px' }}>No Conferences Found</h3>
-            <p>We couldn't find any scientific events matching your filter/search criteria. Please reset your search.</p>
+          <div className="glass-card" style={{ textAlign: 'center', padding: '80px 20px' }}>
+            <div style={{ fontSize: '4rem', marginBottom: '20px' }}>🚀</div>
+            <h3 style={{ marginBottom: '12px', fontSize: '1.8rem', color: 'var(--secondary)' }}>Coming Soon...</h3>
+            <p style={{ maxWidth: '500px', margin: '0 auto', lineHeight: 1.8 }}>We are working on exciting upcoming events. Stay tuned for announcements on conferences, seminars, FDPs, and more!</p>
           </div>
         )}
       </div>

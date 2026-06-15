@@ -149,15 +149,19 @@ export default function Footer({ setActiveTab }) {
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <MapPin size={22} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>Chennai , Tamil Nadu, India</span>
+              <span>55A, 1st Street, Kannikaburam, KK Nagar, Chennai - 78</span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Phone size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>+91 </span>
+              <span>+91 8939150442 </span>
+            </li>
+            <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <Phone size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
+              <span>+91 9080340803</span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Mail size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>shazusofttechnologies@gmail.com</span>
+              <span>info@shazusofttechnologies.org</span>
             </li>
           </ul>
 
