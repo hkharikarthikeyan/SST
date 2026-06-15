@@ -8,6 +8,7 @@ export default function AnnouncementMarquee() {
     "📅 Date: 21 June 2026  |  📍 Location: Salem, Tamil Nadu",
     "🎊 We invite our valued clients, partners, friends & well-wishers to celebrate with us!",
     "🚀 A new chapter begins — driven by cutting-edge technology solutions and lasting impact!",
+    "#ShazuSoftTechnologies #InauguralCeremony #GrandOpening #Salem #Technology #Innovation"
   ];
 
   return (
