@@ -43,17 +43,8 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
     }}>
       {/* Logo Area */}
       <div className="flex-center" style={{ gap: '12px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
-        <div style={{
-          width: '72px',
-          height: '72px',
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #F2C777, #BF8A49)',
-          boxShadow: '0 0 14px rgba(242,199,119,0.7), 0 0 28px rgba(242,199,119,0.3)',
-          border: '2px solid rgba(242,199,119,0.5)',
-          flexShrink: 0,
-          overflow: 'hidden'
-        }}>
-          <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ flexShrink: 0, overflow: 'hidden', width: '72px', height: '72px' }}>
+          <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
           <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1 }}>
@@ -62,25 +53,24 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
               fontWeight: 900,
               fontSize: '1.5rem',
               letterSpacing: '2px',
-              color: '#F2C777',
-              textShadow: '0 0 2px rgba(53, 47, 87, 0.9), 0 0 3px rgba(29, 28, 26, 0.6), 0 0 3px rgba(93, 63, 63, 0.3)',
-            }}>SHAZU</span>
+              color: '#3c9413',
+                }}>SHAZU</span> 
             <span style={{
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               fontSize: '1.5rem',
               letterSpacing: '2px',
-              color: 'var(--text-main)',
-              textShadow: '0 0 8px rgba(242,199,119,0.5), 0 0 16px rgba(242,199,119,0.2)',
+              color: '#3c9413',
             }}>SOFT</span>
           </div>
           <div style={{
-            fontSize: '1.1rem',
-            letterSpacing: '4px',
+            fontFamily: 'var(--font-heading)',
+            fontSize: '1.5rem',
+            fontWeight: 900,
+            letterSpacing: '2px',
             textTransform: 'uppercase',
             fontWeight: 900,
-            color: '#BF8A49',
-            textShadow: '0 0 6px rgba(191,138,73,0.6)',
+            color: '#070965',
           }}>Technologies</div>
         </div>
       </div>
