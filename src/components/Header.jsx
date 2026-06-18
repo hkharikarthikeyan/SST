@@ -43,7 +43,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
     }}>
       {/* Logo Area */}
       <div className="flex-center" style={{ gap: '12px', cursor: 'pointer' }} onClick={() => handleTabClick('home')}>
-        <div style={{ flexShrink: 0, overflow: 'hidden', width: '72px', height: '72px' }}>
+        <div style={{ flexShrink: 0, overflow: 'hidden', width: '110px', height: '97px' }}>
           <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
@@ -53,14 +53,14 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
               fontWeight: 900,
               fontSize: '1.5rem',
               letterSpacing: '1.7px',
-              color: '#3c9413',
+              color: theme === 'dark' ? '#F2C777' : '#3c9413',
                 }}>SHAZU</span><span style={{ display: 'inline-block', width: '8px' }} />
             <span style={{
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               fontSize: '1.5rem',
               letterSpacing: '1.7px',
-              color: '#3c9413',
+              color: theme === 'dark' ? '#F2C777' : '#3c9413',
             }}>SOFT</span>
           </div>
           <div style={{
@@ -69,8 +69,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
             fontWeight: 900,
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
-            fontWeight: 900,
-            color: '#070965',
+            color: theme === 'dark' ? '#BF8A49' : '#070965',
           }}>Technologies</div>
         </div>
       </div>
@@ -86,7 +85,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
                 <button style={{
                   background: 'none',
                   border: 'none',
-                  color: 'var(--text-muted)',
+                  color: theme === 'light' ? 'var(--text-main)' : 'var(--text-muted)',
                   fontFamily: 'var(--font-heading)',
                   fontSize: '0.95rem',
                   fontWeight: 500,
@@ -105,7 +104,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: activeTab === item.id ? 'var(--secondary)' : 'var(--text-muted)',
+                    color: activeTab === item.id ? 'var(--secondary)' : theme === 'light' ? 'var(--text-main)' : 'var(--text-muted)',
                     fontFamily: 'var(--font-heading)',
                     fontSize: '0.95rem',
                     fontWeight: 500,
