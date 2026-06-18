@@ -52,14 +52,14 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               fontSize: '1.5rem',
-              letterSpacing: '2px',
+              letterSpacing: '1.7px',
               color: '#3c9413',
-                }}>SHAZU</span> 
+                }}>SHAZU</span><span style={{ display: 'inline-block', width: '8px' }} />
             <span style={{
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               fontSize: '1.5rem',
-              letterSpacing: '2px',
+              letterSpacing: '1.7px',
               color: '#3c9413',
             }}>SOFT</span>
           </div>
@@ -67,7 +67,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
             fontFamily: 'var(--font-heading)',
             fontSize: '1.5rem',
             fontWeight: 900,
-            letterSpacing: '2px',
+            letterSpacing: '1.5px',
             textTransform: 'uppercase',
             fontWeight: 900,
             color: '#070965',
