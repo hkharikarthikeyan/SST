@@ -15,6 +15,7 @@ import Consultancy from './pages/Consultancy';
 import Membership from './pages/Membership';
 import AboutTeam from './pages/AboutTeam';
 import Contact from './pages/Contact';
+import Career from './pages/Career';
 
 export default function App() {
   const [theme, setTheme] = React.useState('light');
@@ -66,7 +67,7 @@ export default function App() {
       case 'contact':
         return <Contact />;
       case 'career':
-        return <Contact />;
+        return <Career />;
       default:
         return <Home setActiveTab={setActiveTab} />;
     }

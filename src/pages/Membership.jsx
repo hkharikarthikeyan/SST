@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, BookOpen, ShieldCheck, Send, CheckCircle, Award, Briefcase } from 'lucide-react';
+import { Users, BookOpen, ShieldCheck, Send, Award, Briefcase } from 'lucide-react';
 
 const MEMBERSHIPS = [
   {
@@ -25,15 +25,19 @@ const MEMBERSHIPS = [
 ];
 
 const membershipBenefits = [
-  { title: 'Professional Recognition', desc: 'Part of a respected international association committed to excellence.' },
-  { title: 'Conference Discounts', desc: 'Exclusive member discounts on registration fees for conferences and workshops.' },
-  { title: 'Publication Support', desc: 'Special benefits for publishing research papers and scholarly work.' },
-  { title: 'Leadership Opportunities', desc: 'Invited to serve as speakers, chairs, advisory members and reviewers.' },
-  { title: 'Global Networking', desc: 'Access to worldwide network of 10,000+ researchers and professionals.' },
-  { title: 'Awards & Recognition', desc: 'Outstanding members recognized through awards and fellowships.' },
-  { title: 'Research Collaboration', desc: 'Participate in interdisciplinary projects and international collaborations.' },
-  { title: 'Professional Development', desc: 'Training programs, certifications and skill enhancement opportunities.' },
-  { title: 'Digital Resources', desc: 'Access to research publications, proceedings and educational materials.' },
+  { title: 'Attend Workshops, Seminars, and Guest Lectures', desc: 'Access exclusive member rates for events that advance your knowledge and professional connections.' },
+  { title: 'Publish Your Research Papers', desc: 'Receive discounted publication fees and support for disseminating your work.' },
+  { title: 'Collaborate on Research Projects', desc: 'Partner with international universities and global researchers on meaningful projects.' },
+  { title: 'Serve as Editorial or Advisory Member', desc: 'Become part of editorial boards or advisory committees for conferences and academic events.' },
+  { title: 'Expand Your Professional Network', desc: 'Connect with researchers, academicians, and industry experts worldwide.' },
+  { title: 'Access Exclusive Learning Resources', desc: 'Benefit from webinars, technical sessions, and research guidance resources.' },
+  { title: 'Stay Updated with Emerging Technologies', desc: 'Receive regular insights on the latest advancements in technology, research, and innovation.' },
+];
+
+const membershipCategories = [
+  { id: 'professional', title: 'Professional Member', subtitle: 'Academicians, Researchers, Corporate Individuals' },
+  { id: 'student', title: 'Student Member', subtitle: 'UG, PG Students' },
+  { id: 'institutional', title: 'Institutional Member', subtitle: 'Universities / Colleges / Institutions' }
 ];
 
 const membershipOpportunities = [
@@ -51,16 +55,6 @@ const membershipOpportunities = [
 
 export default function Membership() {
   const [activeSegment, setActiveSegment] = useState('pro');
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    chapterType: 'professional', // professional, student, institutional
-    college: '',
-    designation: '',
-    address: ''
-  });
 
   const segments = {
     pro: {
@@ -69,10 +63,10 @@ export default function Membership() {
       tagline: "For Academicians, Scientists & Senior Researchers",
       desc: "Designed for faculties, directors, and active research wizards. Professional membership helps you interact with global technical leaders, receive grants for doctoral advisory, and publish papers with extreme waivers.",
       benefits: [
-        "Up to 40% discount on international conference registrations",
-        "Assistance in drafting major research proposals (UGC/DST)",
+        "Exclusive discounts are available on international conference registrations.",
+        "Expert guidance and support for preparing major research proposals (UGC, DST)",
         "Eligibility to join international journals as advisory review board members",
-        "Global networking access to over 10,000+ senior academicians"
+        "Opportunities to engage with international journals through editorial and review board networks"
       ]
     },
     student: {
@@ -102,7 +96,17 @@ export default function Membership() {
   };
 
   const handleFormChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked, files } = e.target;
+    if (type === 'checkbox') {
+      setFormData(prev => ({ ...prev, [name]: checked }));
+      return;
+    }
+
+    if (type === 'file') {
+      setFormData(prev => ({ ...prev, [name]: files?.[0] ?? null }));
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -111,13 +115,20 @@ export default function Membership() {
     setSubmitted(true);
     setTimeout(() => {
       setFormData({
+        title: 'Mr',
         name: '',
+        dob: '',
+        address: '',
+        interest: '',
         email: '',
         phone: '',
-        chapterType: 'professional',
-        college: '',
+        membershipType: 'professional',
+        associationName: 'isei',
+        qualification: '',
         designation: '',
-        address: ''
+        orgAddress: '',
+        resume: null,
+        declaration: false
       });
       setSubmitted(false);
     }, 4500);
@@ -134,8 +145,20 @@ export default function Membership() {
           Join Our Global Community
         </h2>
         <p style={{ maxWidth: '720px', margin: '15px auto 0', color: 'var(--text-muted)' }}>
-          Welcomes applications from researchers, academicians, scientists, engineers, innovators, industry professionals, entrepreneurs, and students who aspire to contribute to the advancement of science, engineering, technology, and innovation worldwide.
+          Partnering with <strong>Shazusoft Technologies</strong> empowers businesses, professionals, and aspiring developers with innovative digital solutions, technical expertise, and continuous learning opportunities.
         </p>
+        <p style={{ maxWidth: '720px', margin: '15px auto 20px', color: 'var(--text-muted)' }}>
+          Once you connect with us, our team will understand your business goals, technical requirements, and growth objectives to provide customized solutions that drive success. We specialize in software development, cloud and mobile applications, AI-powered innovation, and training programs that keep you ahead of emerging technologies.
+        </p>
+        <a
+          href="https://forms.gle/YTb2QGYZizsprwzK9"
+          target="_blank"
+          rel="noreferrer"
+          className="btn btn-accent"
+          style={{ marginTop: '10px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          Fill Membership Form
+        </a>
       </div>
 
       {/* Associations Cards */}
@@ -146,6 +169,19 @@ export default function Membership() {
             <div key={m.id} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '1rem' }}>{m.title}</h4>
               <p style={{ color: 'var(--text-muted)', marginTop: 0, fontSize: '0.9rem' }}>{m.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Membership Categories */}
+      <div style={{ marginBottom: '40px', position: 'relative', zIndex: 5 }}>
+        <h3 style={{ marginBottom: '12px', textAlign: 'center' }} className="section-title">Membership Categories</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginTop: '12px' }}>
+          {membershipCategories.map(cat => (
+            <div key={cat.id} className="glass-card" style={{ padding: '20px' }}>
+              <h4 style={{ margin: 0, color: 'var(--secondary)', fontSize: '1rem' }}>{cat.title}</h4>
+              <p style={{ color: 'var(--text-muted)', marginTop: '10px', fontSize: '0.92rem' }}>{cat.subtitle}</p>
             </div>
           ))}
         </div>
@@ -221,10 +257,10 @@ export default function Membership() {
         ))}
       </div>
 
-      {/* Benefits Content & Registration Forms */}
+      {/* Benefits Content */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gridTemplateColumns: '1fr',
         gap: '40px',
         position: 'relative',
         zIndex: 5
@@ -264,144 +300,6 @@ export default function Membership() {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Application Form */}
-        <div className="glass-card" style={{ borderTop: '4px solid var(--secondary)' }}>
-          <h3 style={{ marginBottom: '15px' }}>Apply For Society Membership</h3>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '25px' }}>
-            Enter your academic profile details to initiate registration. Upon verification, our local coordinator will issue your membership certificate.
-          </p>
-
-          {submitted ? (
-            <div style={{ textAlign: 'center', padding: '40px 0' }}>
-              <CheckCircle size={50} color="var(--secondary)" style={{ marginBottom: '15px', display: 'inline-block' }} />
-              <h3>Application Submitted!</h3>
-              <p style={{ marginTop: '10px', fontSize: '0.9rem' }}>Our registration coordinators will review your affiliation and respond shortly.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Full Name</label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  required 
-                  value={formData.name}
-                  onChange={handleFormChange}
-                  placeholder="e.g. Dr. Vijay Singh Rathore"
-                  style={{
-                    width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                    background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
-                  }}
-                />
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Email Address</label>
-                  <input 
-                    type="email" 
-                    name="email" 
-                    required 
-                    value={formData.email}
-                    onChange={handleFormChange}
-                    placeholder="Email"
-                    style={{
-                      width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                      background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Phone Number</label>
-                  <input 
-                    type="tel" 
-                    name="phone" 
-                    required 
-                    value={formData.phone}
-                    onChange={handleFormChange}
-                    placeholder="Phone"
-                    style={{
-                      width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                      background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Institution/College</label>
-                  <input 
-                    type="text" 
-                    name="college" 
-                    required 
-                    value={formData.college}
-                    onChange={handleFormChange}
-                    placeholder="College"
-                    style={{
-                      width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                      background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Designation</label>
-                  <input 
-                    type="text" 
-                    name="designation" 
-                    required 
-                    value={formData.designation}
-                    onChange={handleFormChange}
-                    placeholder="e.g. Professor / Scholar"
-                    style={{
-                      width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                      background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Membership Type</label>
-                <select 
-                  name="chapterType" 
-                  value={formData.chapterType}
-                  onChange={handleFormChange}
-                  style={{
-                    width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                    background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', cursor: 'pointer', fontSize: '0.9rem',
-                    height: '42px'
-                  }}
-                >
-                  <option value="professional">Individual Professional Chapter</option>
-                  <option value="student">Student Chapter Establishment</option>
-                  <option value="institutional">Institutional Society Chapter</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '6px', fontWeight: 600 }}>Postal Address</label>
-                <textarea 
-                  name="address" 
-                  rows="2" 
-                  value={formData.address}
-                  onChange={handleFormChange}
-                  placeholder="Where should certificates/letters be sent?"
-                  style={{
-                    width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
-                    background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontFamily: 'var(--font-body)',
-                    fontSize: '0.9rem', resize: 'vertical'
-                  }}
-                ></textarea>
-              </div>
-
-              <button type="submit" className="btn btn-accent" style={{ width: '100%', padding: '12px' }}>
-                <Send size={16} /> Submit Membership application
-              </button>
-            </form>
-          )}
         </div>
       </div>
     </div>

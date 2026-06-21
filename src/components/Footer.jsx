@@ -149,7 +149,7 @@ export default function Footer({ setActiveTab }) {
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <MapPin size={22} color="var(--secondary)" style={{ flexShrink: 0 }} />
-              <span>55A, 1st Street, Kannikaburam, KK Nagar, Chennai - 78</span>
+              <span>2nd Agraharam, Chairman Rajarathinam Street, Near Kamala Hospital, Salem, Tamil Nadu - 636001</span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Phone size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
