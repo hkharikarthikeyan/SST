@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Search, Globe, ChevronDown, User, UserPlus, BookOpen, Sun, Moon } from 'lucide-react';
+import { Menu, X, Search, Globe, ChevronDown, UserPlus, BookOpen, Sun, Moon } from 'lucide-react';
 
 export default function Header({ activeTab, setActiveTab, theme, toggleTheme, setActiveService }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -183,13 +183,6 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
           >
             <UserPlus size={16} /> Join Us
           </button>
-          <button 
-            onClick={() => handleTabClick('contact')}
-            className="btn btn-accent" 
-            style={{ padding: '8px 20px', fontSize: '0.85rem' }}
-          >
-            <User size={16} /> Member Login
-          </button>
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
@@ -321,13 +314,7 @@ export default function Header({ activeTab, setActiveTab, theme, toggleTheme, se
             >
               <UserPlus size={18} /> Join Us
             </button>
-            <button 
-              onClick={() => handleTabClick('contact')}
-              className="btn btn-accent" 
-              style={{ width: '100%' }}
-            >
-              <User size={18} /> Member Login
-            </button>
+
           </div>
         </div>
       )}

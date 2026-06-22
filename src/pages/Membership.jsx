@@ -145,7 +145,7 @@ export default function Membership() {
           Join Our Global Community
         </h2>
         <p style={{ maxWidth: '720px', margin: '15px auto 0', color: 'var(--text-muted)' }}>
-          Partnering with <strong>Shazusoft Technologies</strong> empowers businesses, professionals, and aspiring developers with innovative digital solutions, technical expertise, and continuous learning opportunities.
+          Partnering with <strong>shazu soft Technologies</strong> empowers businesses, professionals, and aspiring developers with innovative digital solutions, technical expertise, and continuous learning opportunities.
         </p>
         <p style={{ maxWidth: '720px', margin: '15px auto 20px', color: 'var(--text-muted)' }}>
           Once you connect with us, our team will understand your business goals, technical requirements, and growth objectives to provide customized solutions that drive success. We specialize in software development, cloud and mobile applications, AI-powered innovation, and training programs that keep you ahead of emerging technologies.

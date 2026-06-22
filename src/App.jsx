@@ -24,7 +24,8 @@ export default function App() {
   }, [theme]);
   const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
 
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState(() => localStorage.getItem('activeTab') || 'home');
+  React.useEffect(() => { localStorage.setItem('activeTab', activeTab); }, [activeTab]);
   const [activeService, setActiveService] = useState(null);
   const [activeAssociation, setActiveAssociation] = useState(null);
 

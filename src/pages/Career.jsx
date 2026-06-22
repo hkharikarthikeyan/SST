@@ -32,7 +32,7 @@ const jobs = [
       'Performance-based recognition and advancement.',
       'Opportunity to work with a dynamic and talented team.',
     ],
-    applyNote: 'Interested candidates can share your resume through email us at hr@shazusofttechnologies.org',
+    applyNote: 'Interested candidates can share your resume through email us',
     closing: 'Start your career journey with Shazu Soft Technologies and grow with us!',
   },
   {
@@ -65,7 +65,7 @@ const jobs = [
       'Career growth based on performance and innovation.',
       'Supportive team culture with professional development opportunities.',
     ],
-    applyNote: 'Submit your resume along with your portfolio through email us at hr@shazusofttechnologies.org',
+    applyNote: 'Submit your resume along with your portfolio through email us',
     closing: 'Bring your creativity to life with Shazu Soft Technologies and shape impactful digital experiences!',
   },
   {
@@ -100,7 +100,7 @@ const jobs = [
       'Performance-based growth and recognition.',
       'Friendly workplace with opportunities to build a rewarding career.',
     ],
-    applyNote: "If you're ready to build your career in digital marketing, submit your resume through email us at hr@shazusofttechnologies.org",
+    applyNote: "If you're ready to build your career in digital marketing, submit your resume through email us ",
     closing: 'Join Shazu Soft Technologies and help create impactful digital experiences that drive business success!',
   },
   {
@@ -135,7 +135,7 @@ const jobs = [
       'Collaborative and supportive work environment.',
       'Performance-based career growth and recognition.',
     ],
-    applyNote: 'Submit your resume through email us at hr@shazusofttechnologies.org',
+    applyNote: 'Submit your resume through email us ',
     closing: 'Build the future of the web with Shazu Soft Technologies and grow your career with us!',
   },
   {
@@ -170,7 +170,7 @@ const jobs = [
       'Performance-based growth and recognition.',
       'Innovative workplace with opportunities to enhance your analytical skills.',
     ],
-    applyNote: "If you're passionate about data and eager to build a career in analytics, submit your resume through email us at hr@shazusofttechnologies.org",
+    applyNote: "If you're passionate about data and eager to build a career in analytics, submit your resume through email us ",
     closing: 'Join Shazu Soft Technologies and turn data into impactful business solutions while building a successful career in analytics!',
   },
 ];

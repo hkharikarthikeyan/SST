@@ -160,6 +160,10 @@ export default function Footer({ setActiveTab }) {
               <span>+91 9080340803</span>
             </li>
             <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <Phone size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
+              <span>HR : 9361680077</span>
+            </li>
+            <li style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               <Mail size={18} color="var(--secondary)" style={{ flexShrink: 0 }} />
               <span>info@shazusofttechnologies.org</span>
             </li>

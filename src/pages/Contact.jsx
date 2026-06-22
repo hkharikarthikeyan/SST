@@ -68,13 +68,13 @@ export default function Contact() {
     {
       title: "Chennai Branch",
       address: "55A, 1st Street, Kannikaburam, KK Nagar, Chennai - 78",
-      phone: "+91 89391 50442, +91 90803 40803",
+      phone: "+91 89391 50442, +91 90803 40803, HR : 9361680077",
       email: "info@shazusofttechnologies.org"
     },
     {
       title: "Headquarters — Salem",
       address: "2nd Agraharam, Chairman Rajarathinam Street, Near Kamala Hospital, Salem, Tamil Nadu - 636001",
-      phone: "+91 89391 50442, +91 90803 40803",
+      phone: "+91 89391 50442, +91 90803 40803, HR : 9361680077",
       email: "info@shazusofttechnologies.org"
     }
   ];
