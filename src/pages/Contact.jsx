@@ -171,7 +171,7 @@ export default function Contact() {
                   required
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="e.g. Dr. Vijay Singh Rathore"
+                  placeholder="Enter Your Full Name"
                   style={{
                     width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
                     background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
@@ -203,7 +203,7 @@ export default function Contact() {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Phone"
+                    placeholder="Phone Number"
                     style={{
                       width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
                       background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'
@@ -220,7 +220,7 @@ export default function Contact() {
                   required
                   value={formData.subject}
                   onChange={handleInputChange}
-                  placeholder="e.g. Inquiry regarding NAAC audit schedules"
+                  placeholder="Subject of Your Message"
                   style={{
                     width: '100%', padding: '10px 15px', borderRadius: '8px', border: '1px solid var(--border-glass)',
                     background: 'var(--primary-light)', color: 'var(--text-main)', outline: 'none', fontSize: '0.9rem'

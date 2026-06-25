@@ -26,7 +26,7 @@ const LinkedinIcon = ({ size = 18 }) => (
   </svg>
 );
 
-export default function Footer({ setActiveTab }) {
+export default function Footer({ setActiveTab, theme }) {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
     window.scrollTo(0, 0);
@@ -52,17 +52,17 @@ export default function Footer({ setActiveTab }) {
         {/* Profile Info */}
         <div>
           <div className="flex-center" style={{ gap: '10px', justifyContent: 'flex-start', marginBottom: '20px' }}>
-            <div className="flex-center" style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50px',
-              background: 'linear-gradient(135deg, var(--secondary), var(--accent))'
-            }}>
+            <div className="flex-center" style={{ width: '100px', height: '100px', borderRadius: '50px' }}>
               <img src="/sst.svg" alt="SST Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
-            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '1px' }}>
-              SHAZU<span style={{ color: 'var(--secondary)' }}>SOFT</span> Technologies
-            </span>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', lineHeight: 1 }}>
+                <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '1.7px', color: theme === 'dark' ? '#F2C777' : '#3c9413' }}>SHAZU</span>
+                <span style={{ display: 'inline-block', width: '8px' }} />
+                <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.5rem', letterSpacing: '1.7px', color: theme === 'dark' ? '#F2C777' : '#3c9413' }}>SOFT</span>
+              </div>
+              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 900, letterSpacing: '1.5px', textTransform: 'uppercase', color: theme === 'dark' ? '#BF8A49' : '#070965' }}>Technologies</div>
+            </div>
           </div>
           <p style={{ fontSize: '0.9rem', marginBottom: '24px', lineHeight: 1.7 }}>
             World's largest academic consulting and professional events network. We integrate R&D innovation, accreditation support, scientific publications, and international conferences to transform higher education.

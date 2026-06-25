@@ -94,7 +94,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer setActiveTab={setActiveTab} />
+      <Footer setActiveTab={setActiveTab} theme={theme} />
     </div>
   );
 }
