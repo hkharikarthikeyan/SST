@@ -98,7 +98,7 @@ export default function Home({ setActiveTab, theme }) {
       <HeroSlider setActiveTab={setActiveTab} theme={theme} />
 
       {/* Marquee */}
-      <AnnouncementMarquee />
+      <AnnouncementMarquee setActiveTab={setActiveTab} />
 
       {/* Audience Quick Links */}
       <QuickLinks setActiveTab={setActiveTab} />

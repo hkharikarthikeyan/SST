@@ -17,6 +17,8 @@ import AboutTeam from './pages/AboutTeam';
 import Contact from './pages/Contact';
 import Career from './pages/Career';
 
+import Announcements from './pages/Announcements';
+
 export default function App() {
   const [theme, setTheme] = React.useState('light');
   React.useEffect(() => {
@@ -67,6 +69,8 @@ export default function App() {
         return <AboutTeam />;
       case 'contact':
         return <Contact />;
+      case 'announcements':
+        return <Announcements />;
       case 'career':
         return <Career />;
       default:

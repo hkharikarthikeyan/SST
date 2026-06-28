@@ -1,5 +1,28 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Search, Filter, ClipboardList, CheckCircle } from 'lucide-react';
+import { Calendar, MapPin, Search, Filter, ClipboardList, CheckCircle, Award } from 'lucide-react';
+
+const COMPLETED_EVENTS = [
+  {
+    id: 1,
+    image: '/MDwith Inaugural.jpeg',
+    badge: 'Milestone',
+    badgeColor: '#facc15',
+    title: 'Shazu Soft Technologies — Inauguration Ceremony',
+    date: '21 June 2026',
+    location: 'Salem, Tamil Nadu',
+    desc: 'The Inaugural Ceremony of Shazu Soft Technologies was successfully completed. A proud new beginning committed to quality, innovation, and digital excellence.'
+  },
+  {
+    id: 2,
+    image: '/mahendra.jpeg',
+    badge: 'FDP Completed',
+    badgeColor: '#64ffda',
+    title: 'Faculty Industrial Training — AI&DS Dept, Mahendra Engineering College',
+    date: '23–28 June 2026',
+    location: 'Shazu Soft Technologies, Salem',
+    desc: 'Six-day Faculty Industrial Training for Assistant Professors from AI&DS, Mahendra Engineering College. Hands-on exposure to industry tech, software practices & research methodologies.'
+  }
+];
 
 export default function Conferences() {
   const [filter, setFilter] = useState('all');
@@ -80,6 +103,61 @@ export default function Conferences() {
         <p style={{ maxWidth: '600px', margin: '15px auto 0' }}>
           Participate in global research networks. Register for upcoming international conferences, present your research, or browse past conference proceedings.
         </p>
+      </div>
+
+      {/* Completed Events */}
+      <div style={{ marginBottom: '50px', position: 'relative', zIndex: 5 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+          <Award size={20} color="var(--secondary)" />
+          <h3 className="section-title" style={{ margin: 0 }}>Completed Events</h3>
+        </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '24px'
+        }}>
+          {COMPLETED_EVENTS.map(ev => (
+            <div key={ev.id} className="glass-card" style={{
+              padding: 0, overflow: 'hidden',
+              borderTop: `3px solid ${ev.badgeColor}`,
+              display: 'flex', flexDirection: 'column'
+            }}>
+              {/* Fixed aspect-ratio image container */}
+              <div style={{ width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src={ev.image}
+                  alt={ev.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                />
+              </div>
+              {/* Content */}
+              <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <span style={{
+                  display: 'inline-block', alignSelf: 'flex-start',
+                  background: `${ev.badgeColor}20`, color: ev.badgeColor,
+                  fontSize: '0.72rem', fontWeight: 700,
+                  padding: '3px 10px', borderRadius: '20px',
+                  border: `1px solid ${ev.badgeColor}40`
+                }}>
+                  ✅ {ev.badge}
+                </span>
+                <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.4, margin: 0 }}>
+                  {ev.title}
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  <span>📅 {ev.date}</span>
+                  <span>📍 {ev.location}</span>
+                </div>
+                <p style={{
+                  fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0,
+                  display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden'
+                }}>
+                  {ev.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Event Types Cards - Drag to Scroll */}

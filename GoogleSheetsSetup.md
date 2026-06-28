@@ -1,91 +1,97 @@
-# Google Sheets Integration Setup Guide
+# SST Certificate Auto-Generation — Setup Guide
 
-Follow these steps to connect the contact form in your React application directly to a Google Sheet.
-
-## Step 1: Create a Google Sheet
-1. Open [Google Sheets](https://sheets.google.com) and create a blank spreadsheet.
-2. Name the spreadsheet (e.g., `Contact Form Responses`).
-3. Set the column headers in the first row (A1 to F1):
-   - **Timestamp**
-   - **Name**
-   - **Email**
-   - **Phone**
-   - **Subject**
-   - **Message**
-
-## Step 2: Open Google Apps Script
-1. In your Google Sheet menu, go to **Extensions** > **Apps Script**.
-2. Delete any default code in the editor (`Code.gs`) and paste the following script:
-
-```javascript
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  
-  // Create headers if sheet is empty
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Timestamp", "Name", "Email", "Phone", "Subject", "Message"]);
-  }
-  
-  try {
-    var data;
-    if (e.postData && e.postData.contents) {
-      data = JSON.parse(e.postData.contents);
-    } else {
-      data = e.parameter;
-    }
-    
-    var timestamp = new Date();
-    var name = data.name || "";
-    var email = data.email || "";
-    var phone = data.phone || "";
-    var subject = data.subject || "";
-    var message = data.message || "";
-    
-    sheet.appendRow([timestamp, name, email, phone, subject, message]);
-    
-    return ContentService.createTextOutput(JSON.stringify({ 
-      "status": "success", 
-      "message": "Response submitted successfully!" 
-    }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader("Access-Control-Allow-Origin", "*");
-    
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({ 
-      "status": "error", 
-      "message": error.toString() 
-    }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader("Access-Control-Allow-Origin", "*");
-  }
-}
-
-function doOptions(e) {
-  return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeader("Access-Control-Allow-Origin", "*")
-    .setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-    .setHeader("Access-Control-Allow-Headers", "Content-Type");
-}
+## How It Works
+```
+Form Submit → Google Sheet → Apps Script
+  → Reads "Association Name" field
+  → Picks correct certificate PNG (ISEI/IAMHP/ACAR/WASP)
+  → Overlays member Name in centre blank space
+  → Exports as PDF
+  → Emails PDF to member automatically
 ```
 
-## Step 3: Deploy the Script
-1. Click the **Save** icon (floppy disk) at the top of the editor.
-2. Click **Deploy** > **New deployment**.
-3. Click the gear icon next to "Select type" and choose **Web app**.
-4. Configure the settings:
-   - **Description**: `Contact Form Endpoint`
-   - **Execute as**: `Me (your-email@gmail.com)`
-   - **Who has access**: `Anyone` (This is critical so the React app can submit data without authentication).
-5. Click **Deploy**.
-6. Google will ask you to authorize access. Click **Authorize Access**, log in to your account, and choose **Advanced** > **Go to Untitled project (unsafe)**, then click **Allow**.
-7. Copy the **Web App URL** provided under the Deployment ID (it looks like `https://script.google.com/macros/s/.../exec`).
+---
 
-## Step 4: Configure the React App
-1. Open `src/pages/Contact.jsx`.
-2. Find the configuration variable:
-   ```javascript
-   const GOOGLE_SHEET_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+## Step 1: Download 4 Certificate PNGs from Canva
+
+1. Open your Canva design: `canva.com/design/DAHN1VwDvUQ/...`
+2. Click **Share → Download → PNG**
+3. Download **each page separately**:
+   - Page 1 → save as `ISEI.png`
+   - Page 2 → save as `IAMHP.png`
+   - Page 3 → save as `ACAR.png`
+   - Page 4 → save as `WASP.png`
+
+---
+
+## Step 2: Upload PNGs to Google Drive
+
+1. Upload all 4 PNGs to Google Drive
+2. For **each file**, right-click → **Share** → change to "Anyone with the link"
+3. Copy each file's **ID** from the URL:
    ```
-3. Replace `"YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL"` with the URL you copied in Step 3.
-4. Save the file. Any form submissions will now be logged directly into your Google Sheet!
+   drive.google.com/file/d/  ←FILE_ID_HERE→  /view
+   ```
+
+---
+
+## Step 3: Paste Script into Apps Script
+
+1. Open the **Google Sheet** linked to your membership form
+2. Click **Extensions → Apps Script**
+3. Delete any existing code
+4. Paste the full contents of `CertificateScript.gs`
+5. Replace the 4 file IDs in `CERT_IMAGES`:
+
+```js
+var CERT_IMAGES = {
+  'Institute of Science, Engineering and Innovation (ISEI)':               'PASTE_ISEI_FILE_ID',
+  'International Association of Medical and Health Professionals (IAMHP)': 'PASTE_IAMHP_FILE_ID',
+  'Association of Creative Arts and Research (ACAR)':                      'PASTE_ACAR_FILE_ID',
+  'World Association of Scholars and Professionals (WASP)':                'PASTE_WASP_FILE_ID'
+};
+```
+
+> ⚠️ The association name strings must match **exactly** what appears in your Google Form dropdown
+
+---
+
+## Step 4: Test First
+
+1. In `testCertificate()`, replace `your-test-email@gmail.com` with your own email
+2. Click **Run → testCertificate**
+3. Grant permissions when prompted
+4. Check your inbox — you should receive the ISEI certificate as PDF
+5. If the **name position is off**, adjust `NAME_TOP` value in the script:
+   - Increase `NAME_TOP` → moves name lower
+   - Decrease `NAME_TOP` → moves name higher
+   - Current value: `240` (roughly centre of a 504pt tall slide)
+
+---
+
+## Step 5: Activate Auto-Trigger
+
+Once test looks good:
+1. Click **Run → setupTrigger** (only once)
+2. From now on every form submission auto-generates and emails the correct certificate
+
+---
+
+## Form Field Mapping
+
+| Form Field Label        | Used For           |
+|-------------------------|--------------------|
+| Association Name        | Selects certificate image |
+| Name (Mr/Ms/Prof/Dr)    | Printed on certificate |
+| Email ID                | Certificate sent here |
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| "No certificate image mapped" in logs | Association name in script doesn't match form dropdown exactly |
+| Name printed in wrong position | Adjust `NAME_TOP` in script (line ~20) |
+| No email received | Check Gmail quota / spam folder |
+| Permission denied | Re-run `setupTrigger()` and grant all permissions |
