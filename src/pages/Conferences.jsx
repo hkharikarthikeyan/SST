@@ -21,6 +21,16 @@ const COMPLETED_EVENTS = [
     date: '23–28 June 2026',
     location: 'Shazu Soft Technologies, Salem',
     desc: 'Six-day Faculty Industrial Training for Assistant Professors from AI&DS, Mahendra Engineering College. Hands-on exposure to industry tech, software practices & research methodologies.'
+  },
+  {
+    id: 3,
+    image: '/member.jpeg',
+    badge: 'FDP Completed',
+    badgeColor: '#a78bfa',
+    title: 'Faculty Industrial Training — CSE Dept, Mahendra Engineering College',
+    date: '02–08 July 2026',
+    location: 'Shazu Soft Technologies, Salem',
+    desc: 'Seven-day Faculty Industrial Training for Assistant Professors from the Department of Computer Science and Engineering, Mahendra Engineering College, Mallasamudram. Participants gained practical exposure to industry-oriented technologies, software development practices, research methodologies, and emerging technology trends — bridging the gap between academia and industry.'
   }
 ];
 
