@@ -1,42 +1,12 @@
 // ============================================================
-// SST Membership Certificate Generator
+// SST Membership Registration — Congratulations Mail Sender
 // Google Apps Script — paste in Extensions > Apps Script
 // ============================================================
 
-var CERT_IMAGES = {
-  'Institute of Science, Engineering and Innovation (ISEI)':               '1XTAsIcg_jMHJWi3FjJHIwB8Sg6O_-7QB',
-  'International Association of Medical and Health Professionals (IAMHP)': '16A8ydvZrqMYDSd7wuR88OfjQPu0lwo8w',
-  'Association of Creative Arts and Research (ACAR)':                      '13k4--nEDZlqbTbsRCBL776eXj0P30pNF',
-  'World Association of Scholars and Professionals (WASP)':                '18WvrX3yuh2HRMgEBA9Vwc7astUHSoMiv'
-};
-
-var MEM_PREFIX = {
-  'Institute of Science, Engineering and Innovation (ISEI)':               'ISEI',
-  'International Association of Medical and Health Professionals (IAMHP)': 'IAMHP',
-  'Association of Creative Arts and Research (ACAR)':                      'ACAR',
-  'World Association of Scholars and Professionals (WASP)':                'WASP'
-};
-
-// Certificate portrait ratio 4419 x 6250
-var CERT_RATIO = 4419 / 6250; // 0.7070
-
-// ── Overlay positions (ratio of imgW or imgH) ───────────────
-var NAME_TOP_RATIO  = 0.53;   // name vertical position
-var NAME_FONT_SIZE  = 22;
-var NAME_COLOR      = '#1a237e';
-
-var MEM_LEFT_RATIO  = 0.04;   // membership no. from left of image
-var MEM_TOP_RATIO   = 0.845;  // membership no. from top of image
-var MEM_FONT_SIZE   = 7;
-
-var DATE_LEFT_RATIO = 0.58;   // date from left of image
-var DATE_TOP_RATIO  = 0.845;  // date from top of image
-var DATE_FONT_SIZE  = 7;
-
-// ─────────────────────────────────────────────────────────────
-
 function setupTrigger() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  // Replace this with your Google Sheet URL or ID
+  var SHEET_ID = '19Ta30QTTEgXYv0gMZd-efS5wpUd4BrdzTnyN2Jitf-8';
+  var ss = SpreadsheetApp.openById(SHEET_ID);
   ScriptApp.getProjectTriggers().forEach(function(t) { ScriptApp.deleteTrigger(t); });
   ScriptApp.newTrigger('onFormSubmit').forSpreadsheet(ss).onFormSubmit().create();
   Logger.log('Trigger created.');
@@ -55,113 +25,34 @@ function onFormSubmit(e) {
   var name        = data['name (mr/ms/prof/dr)'] || data['name'] || '';
   var email       = data['email id'] || data['email'] || '';
 
-  if (!email || !association) { Logger.log('Missing email or association.'); return; }
-  var imageId = CERT_IMAGES[association];
-  if (!imageId) { Logger.log('No image for: ' + association); return; }
+  if (!email || !name) { Logger.log('Missing email or name.'); return; }
 
-  var pdf = generateCertificate(name, imageId, association);
-  sendEmail(email, name, association, pdf);
+  sendEmail(email, name, association);
 }
 
-function generateCertificate(name, imageId, association) {
-  var token    = ScriptApp.getOAuthToken();
-  var response = UrlFetchApp.fetch('https://lh3.googleusercontent.com/d/' + imageId + '=w2000', {
-    headers: { Authorization: 'Bearer ' + token },
-    muteHttpExceptions: true
-  });
-  Logger.log('Image: ' + response.getResponseCode() + ' | ' + response.getContent().length + ' bytes');
+function sendEmail(email, name, association) {
+  var assocLine = association
+    ? '<p>You have successfully registered as a member of <strong>' + association + '</strong>.</p>'
+    : '';
 
-  var imgBlob = response.getBlob().copyBlob();
-  imgBlob.setContentType('image/png');
-
-  var deck   = SlidesApp.create('CERT_TEMP_' + name);
-  var deckId = deck.getId();
-  var slide  = deck.getSlides()[0];
-  slide.getPageElements().forEach(function(el) { el.remove(); });
-
-  var sw = deck.getPageWidth();   // 720 pt
-  var sh = deck.getPageHeight();  // 405 pt
-
-  // Fit portrait image into landscape slide without whitespace
-  var imgH = sh;
-  var imgW = sh * CERT_RATIO;
-  if (imgW > sw) { imgW = sw; imgH = sw / CERT_RATIO; }
-  var imgX = (sw - imgW) / 2;
-  var imgY = (sh - imgH) / 2;
-
-  var bg = slide.insertImage(imgBlob);
-  bg.setLeft(imgX).setTop(imgY).setWidth(imgW).setHeight(imgH);
-
-  // ── Name ──────────────────────────────────────────────────
-  var nameBox = slide.insertTextBox(
-    name,
-    imgX, imgY + (imgH * NAME_TOP_RATIO), imgW, 50
-  );
-  nameBox.getText().getTextStyle()
-    .setFontSize(NAME_FONT_SIZE).setBold(true).setForegroundColor(NAME_COLOR);
-  nameBox.getText().getParagraphStyle()
-    .setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
-  nameBox.getFill().setTransparent();
-
-  // ── Membership Number ─────────────────────────────────────
-  var prefix = MEM_PREFIX[association] || 'SST';
-  var year   = new Date().getFullYear();
-  var serial = Math.floor(1000 + Math.random() * 9000);
-  var memNo  = prefix + '/MEM/' + year + '/' + serial;
-
-  var memBox = slide.insertTextBox(
-    memNo,
-    imgX + (imgW * MEM_LEFT_RATIO),
-    imgY + (imgH * MEM_TOP_RATIO),
-    imgW * 0.38,
-    20
-  );
-  memBox.getText().getTextStyle()
-    .setFontSize(MEM_FONT_SIZE).setBold(true).setForegroundColor('#1a237e');
-  memBox.getFill().setTransparent();
-
-  // ── Date of Issue ─────────────────────────────────────────
-  var today  = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy');
-
-  var dateBox = slide.insertTextBox(
-    today,
-    imgX + (imgW * DATE_LEFT_RATIO),
-    imgY + (imgH * DATE_TOP_RATIO),
-    imgW * 0.35,
-    20
-  );
-  dateBox.getText().getTextStyle()
-    .setFontSize(DATE_FONT_SIZE).setBold(true).setForegroundColor('#1a237e');
-  dateBox.getFill().setTransparent();
-
-  deck.saveAndClose();
-
-  var pdfBlob = DriveApp.getFileById(deckId).getAs('application/pdf').copyBlob();
-  pdfBlob.setName('SST_Certificate_' + name.replace(/ /g, '_') + '.pdf');
-  DriveApp.getFileById(deckId).setTrashed(true);
-
-  return pdfBlob;
-}
-
-function sendEmail(email, name, association, pdfBlob) {
-  GmailApp.sendEmail(email, 'Your SST Membership Certificate — ' + association, '', {
+  GmailApp.sendEmail(email, 'Congratulations! Your SST Membership Registration is Confirmed', '', {
     name: 'SST Membership Team',
     htmlBody:
-      '<p>Dear ' + name + ',</p>' +
-      '<p>Congratulations on your membership with <strong>' + association + '</strong>!</p>' +
-      '<p>Please find your official <strong>SST Membership Certificate</strong> attached.</p>' +
-      '<p>Welcome to our global community.</p>' +
-      '<br><p>Warm regards,<br><strong>SST Membership Team</strong></p>',
-    attachments: [pdfBlob]
+      '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px;">' +
+        '<h2 style="color: #073A59;">🎉 Congratulations, ' + name + '!</h2>' +
+        '<p>We are delighted to inform you that your membership registration with <strong>Shazu Soft Technologies</strong> has been successfully received.</p>' +
+        assocLine +
+        '<p>Our team will review your application and get in touch with you shortly with further details regarding your membership benefits and next steps.</p>' +
+        '<hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">' +
+        '<p style="color: #555;">If you have any questions, feel free to reach us at <a href="mailto:info@shazusofttechnologies.org">info@shazusofttechnologies.org</a></p>' +
+        '<br>' +
+        '<p>Warm regards,<br><strong>SST Membership Team</strong><br>Shazu Soft Technologies<br>Salem, Tamil Nadu</p>' +
+      '</div>'
   });
-  Logger.log('Certificate emailed to ' + email);
+  Logger.log('Congratulations email sent to ' + email);
 }
 
-function testCertificate() {
-  var testAssociation = 'Institute of Science, Engineering and Innovation (ISEI)';
-  var testName        = 'MR. JOHN DOE';
-  var testEmail       = 'kharikumarhd690@gmail.com';
-  var pdf = generateCertificate(testName, CERT_IMAGES[testAssociation], testAssociation);
-  sendEmail(testEmail, testName, testAssociation, pdf);
-  Logger.log('Test done — check inbox.');
+function testEmail() {
+  sendEmail('kharikumarhd690@gmail.com', 'MR. JOHN DOE', 'Institute of Science, Engineering and Innovation (ISEI)');
+  Logger.log('Test email sent — check inbox.');
 }

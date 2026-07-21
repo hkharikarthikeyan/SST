@@ -31,6 +31,16 @@ const COMPLETED_EVENTS = [
     date: '02–08 July 2026',
     location: 'Shazu Soft Technologies, Salem',
     desc: 'Seven-day Faculty Industrial Training for Assistant Professors from the Department of Computer Science and Engineering, Mahendra Engineering College, Mallasamudram. Participants gained practical exposure to industry-oriented technologies, software development practices, research methodologies, and emerging technology trends — bridging the gap between academia and industry.'
+  },
+  {
+    id: 4,
+    image: '/moui.jpeg',
+    badge: 'MoU Signed',
+    badgeColor: '#34d399',
+    title: 'MoU Signed — Dept. of AI & Data Science, Mahendra Engineering College, Namakkal',
+    date: '2025',
+    location: 'Salem & Mallasamudram, Namakkal, Tamil Nadu',
+    desc: 'Shazu Soft Technologies, Salem, proudly signed a Memorandum of Understanding (MoU) with the Department of Artificial Intelligence and Data Science, Mahendra Engineering College, Mallasamudram, Namakkal, to foster industry–academia collaboration. This partnership aims to enhance student skill development, internships, research collaboration, innovative projects, faculty development programs, and knowledge sharing, bridging the gap between academic learning and industry requirements.'
   }
 ];
 

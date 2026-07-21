@@ -18,6 +18,18 @@ export default function HeroSlider({ setActiveTab, theme }) {
       image: "/MDwith Inaugural.jpeg"
     },
     {
+      title: "MoU Signed with Mahendra Engineering College, Namakkal",
+      subtitle: "MoU SIGNED",
+      badgeIcon: <Award size={14} />,
+      desc: "Shazu Soft Technologies, Salem, proudly signed a Memorandum of Understanding (MoU) with the Department of Artificial Intelligence and Data Science, Mahendra Engineering College, Mallasamudram, Namakkal.",
+      actionText: "Know More",
+      actionTab: "conferences",
+      accentColor: "#34d399",
+      bgGradient: "linear-gradient(rgba(5,20,40,0.82), rgba(2,12,27,0.94))",
+      bgGradientLight: "linear-gradient(rgba(230,255,245,0.88), rgba(245,255,250,0.96))",
+      image: "/moui.jpeg"
+    },
+    {
       title: "Faculty Industrial Training Program Successfully Completed!",
       subtitle: "INDUSTRY MILESTONE",
       badgeIcon: <Award size={14} />,
