@@ -38,7 +38,7 @@ const COMPLETED_EVENTS = [
     badge: 'MoU Signed',
     badgeColor: '#34d399',
     title: 'MoU Signed — Dept. of AI & Data Science, Mahendra Engineering College, Namakkal',
-    date: '2025',
+    date: '2026',
     location: 'Salem & Mallasamudram, Namakkal, Tamil Nadu',
     desc: 'Shazu Soft Technologies, Salem, proudly signed a Memorandum of Understanding (MoU) with the Department of Artificial Intelligence and Data Science, Mahendra Engineering College, Mallasamudram, Namakkal, to foster industry–academia collaboration. This partnership aims to enhance student skill development, internships, research collaboration, innovative projects, faculty development programs, and knowledge sharing, bridging the gap between academic learning and industry requirements.'
   }
